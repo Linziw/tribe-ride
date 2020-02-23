@@ -1,0 +1,2 @@
+class TribesController < ApplicationController
+end
