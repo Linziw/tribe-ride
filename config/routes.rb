@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_rides
   resources :user_tribes
   resources :rides
   resources :tribes
