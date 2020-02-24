@@ -1,1 +1,9 @@
-user show page
+<h3><%=@user.username%></h3>
+
+<h2>Your Tribes </h2>
+
+<ul>
+<%@user.tribes.each do |tribe|%>
+  <li><%=tribe.name%></li>
+  <%end%>
+</ul>
