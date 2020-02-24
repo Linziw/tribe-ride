@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/' => 'sessions#welcome'
   resources :user_rides
   resources :user_tribes
   resources :rides
