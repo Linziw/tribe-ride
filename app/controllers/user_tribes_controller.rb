@@ -1,0 +1,2 @@
+class UserTribesController < ApplicationController
+end

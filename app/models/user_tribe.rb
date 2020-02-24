@@ -1,0 +1,2 @@
+class UserTribe < ApplicationRecord
+end
