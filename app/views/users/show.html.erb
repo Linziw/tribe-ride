@@ -9,3 +9,6 @@
 </ul>
 
 <%=button_to "Join A Tribe", tribes_path, method: :get%>
+<%if @user.admin %>
+<%=button_to "Create A Tribe", new_tribe_path, method: :get%>
+<%end%>
