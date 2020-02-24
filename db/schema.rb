@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_24_110719) do
+ActiveRecord::Schema.define(version: 2020_02_24_112652) do
 
   create_table "rides", force: :cascade do |t|
-    t.integer "tride_id"
     t.string "instructor"
     t.date "date"
     t.time "time"
