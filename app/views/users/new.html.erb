@@ -1,1 +1,20 @@
-new user form
+
+<%= form_for @user do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %> <br>
+<br>
+  <%= f.label :email %>
+  <%= f.email_field :username %> <br>
+  <br>
+
+    <%= f.label :password %>
+  <%= f.password_field :password %> <br>
+  <br>
+
+    <%= f.label :admin %>
+  <%= f.check_box :admin %> <br>
+
+  <br>
+
+  <%= f.submit "Signup" %>
+<% end %>
