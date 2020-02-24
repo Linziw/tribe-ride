@@ -13,6 +13,10 @@ class TribesController < ApplicationController
     redirect_to tribe_path(@tribe)
   end
 
+  def show
+    @tribe=Tribe.find(params[:id])
+  end
+
   private
 
   def tribe_params
