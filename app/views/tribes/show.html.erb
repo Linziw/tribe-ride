@@ -1,1 +1,7 @@
-heres the tribe page
+<h1><%=@tribe.name%></h1>
+
+<p>Upcoming Rides<p>
+
+<%@tribe.rides.each do |ride|%>
+<p><%=ride.date%> <%=ride.instructor%> <%=ride.time%><%=ride.format%> <%=ride.duration%></p>
+<%end%>
