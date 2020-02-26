@@ -1,0 +1,16 @@
+<h1>Add a new ride</h1>
+
+<%= form_for @ride do |f| %>
+  <%= f.label :instructor %>
+  <%= f.text_field :instructor %> <br>
+<br>
+  <%= f.label :duration %>
+  <%= f.text_field :duration %> <br>
+  <br>
+
+    <%= f.label :format %>
+  <%= f.text_field :format %> <br>
+  <br>
+
+  <%= f.submit "Add Ride" %>
+<% end %>
