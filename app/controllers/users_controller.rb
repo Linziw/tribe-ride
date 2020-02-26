@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user=User.find(params[:id])
   end
 
-  def tribe_edit
+  def tribe_select
     @user=User.find(session[:user_id])
   end
 
