@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/signup' => 'users#new'
+  get '/tribe_edit' => 'users#tribe_edit'
   resources :user_rides
   resources :user_tribes
   resources :rides

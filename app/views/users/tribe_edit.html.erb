@@ -1,0 +1,5 @@
+<h1>Choose your Tribes</h1>
+  
+<%form_tag%>
+<%=collection_check_boxes(:tribe, :tribe_ids, Tribe.all, :id, :name)%><br>
+<%=submit_tag "Submit"%>

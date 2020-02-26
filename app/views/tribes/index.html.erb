@@ -1,7 +1,4 @@
 <%@tribes.each do |tribe|%>
-
-<%=tribe.name%>
-
+<%=tribe.name%> 
 <%end%>
 
-<%=collection_check_boxes(:tribe, :tribe_ids, Tribe.all, :id, :name)%>

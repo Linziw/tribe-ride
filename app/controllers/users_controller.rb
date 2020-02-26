@@ -15,6 +15,9 @@ class UsersController < ApplicationController
     @user=User.find(params[:id])
   end
 
+  def tribe_edit
+  end
+
   private
 
   def user_params
