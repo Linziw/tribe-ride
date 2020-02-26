@@ -16,6 +16,14 @@ class UsersController < ApplicationController
   end
 
   def tribe_edit
+    @user=User.find(session[:user_id])
+  end
+
+  def update
+    @user=User.find(session[:user_id])
+    @user.tribe_ids = params[:user][:tribe_ids]
+    @user.save
+  redirect_to user_path(@user)
   end
 
   private
