@@ -1,5 +1,7 @@
 <h1><%=@tribe.name%></h1>
 
+<%= image_tag @tribe.image %>
+
 <p>Upcoming Rides<p>
 
 <%@tribe.rides.each do |ride|%>
