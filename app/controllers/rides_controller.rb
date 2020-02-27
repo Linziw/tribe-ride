@@ -8,23 +8,19 @@ class RidesController < ApplicationController
     else
       redirect_to user_path(@user)
     end
-
-    
   end
 
   def create
     @user=User.find(session[:user_id])
-    #need to add nested resources to be able to get params id of tribe to associate
+    @tribe=Tribe.find(params[:ride][:tribe_id])
     @ride=Ride.new(ride_params)
-    binding.pry
     @ride.save
-    redirect_to user_path(@user)
-    #should go back to tribe page
+    redirect_to tribe_path(@tribe)
   end
 
   private
 
   def ride_params
-  params.require(:ride).permit(:instructor, :date, :time, :duration, :format)
+  params.require(:ride).permit(:instructor, :date, :time, :duration, :format, :tribe_id)
   end
 end

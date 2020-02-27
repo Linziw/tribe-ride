@@ -2,6 +2,9 @@
 <h2>Add a new ride</h2>
 
 <%= form_for @ride do |f| %>
+
+  <%= f.hidden_field :tribe_id, :value => params[:tribe_id] %>
+
   <%= f.label :instructor %>
    <%= f.text_field :instructor %><br>
 <br>
