@@ -6,4 +6,8 @@ class Tribe < ApplicationRecord
   def thumbnail
     self.image.variant(resize: '300x300')
   end
+
+  def main_image
+    self.image.variant(resize: '600x600')
+  end
 end
