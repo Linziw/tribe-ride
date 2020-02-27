@@ -20,6 +20,11 @@ class RidesController < ApplicationController
 
   def show
     @ride=Ride.find(params[:id])
+    if params[:tribe_id]
+      @tribe=Tribe.find(params[:tribe_id])
+    else
+      redirect_to tribe_path(@tribe)
+    end
   end
 
   private
