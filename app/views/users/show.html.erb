@@ -4,7 +4,7 @@
 
 
 <%@user.tribes.each do |tribe|%>
-  <%= image_tag tribe.image %><br>
+  <%= image_tag tribe.thumbnail%><br>
   <%=link_to tribe.name, tribe_path(tribe)%><br>
   
   <%end%>

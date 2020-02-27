@@ -18,10 +18,14 @@ class TribesController < ApplicationController
     @user= User.find(session[:user_id])
   end
 
+  
+
   private
 
   def tribe_params
     params.require(:tribe).permit(:name, :image_url, :url, :image )
     end
+
+   
 
 end
