@@ -2,12 +2,12 @@
 
 <h2>Your Tribes </h2>
 
-<ul>
-<%@user.tribes.each do |tribe|%>
-  <li><%=tribe.name%></li>
-  <%end%>
-</ul>
 
+<%@user.tribes.each do |tribe|%>
+  <%=link_to tribe.name, tribe_path%><br>
+  <%end%>
+
+<br>
 <%=button_to "Select My Tribes", '/tribe_select', method: :get%>
 <%if @user.admin %>
 <%=button_to "Create A Tribe", new_tribe_path, method: :get%>
