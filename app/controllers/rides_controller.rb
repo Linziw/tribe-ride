@@ -18,6 +18,10 @@ class RidesController < ApplicationController
     redirect_to tribe_path(@tribe)
   end
 
+  def show
+    @ride=Ride.find(params[:id])
+  end
+
   private
 
   def ride_params
