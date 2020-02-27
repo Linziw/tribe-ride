@@ -9,5 +9,5 @@
 <%end%>
 
 <%if @user.admin%>
-<%=button_to "Add A Ride", new_ride_path, method: :get%>
+<%=button_to "Add A Ride", new_tribe_ride_path(@tribe.id), method: :get%>
 <%end%>

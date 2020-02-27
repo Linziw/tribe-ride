@@ -1,8 +1,9 @@
-<h1>Add a new ride</h1>
+<h1><%=@tribe.name%><h1>
+<h2>Add a new ride</h2>
 
 <%= form_for @ride do |f| %>
   <%= f.label :instructor %>
-  <%= f.text_field :instructor %> <br>
+   <%= f.text_field :instructor %><br>
 <br>
   <%= f.label :date %>
   <%= f.date_field :date %> <br>

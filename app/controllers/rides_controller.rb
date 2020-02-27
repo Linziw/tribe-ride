@@ -1,7 +1,15 @@
 class RidesController < ApplicationController
 
   def new
-    @ride=Ride.new  
+    @user=User.find(session[:user_id])
+    if params[:tribe_id]
+      @ride=Ride.new
+    @tribe=Tribe.find(params[:tribe_id])
+    else
+      redirect_to user_path(@user)
+    end
+
+    
   end
 
   def create
