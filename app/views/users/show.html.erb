@@ -5,6 +5,7 @@
 
 <%@user.tribes.each do |tribe|%>
   <%=link_to tribe.name, tribe_path%><br>
+  <%= link_to image_tag(tribe.image_url), tribe_path%>
   <%end%>
 
 <br>
@@ -12,3 +13,4 @@
 <%if @user.admin %>
 <%=button_to "Create A Tribe", new_tribe_path, method: :get%>
 <%end%>
+

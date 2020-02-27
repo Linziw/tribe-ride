@@ -21,7 +21,7 @@ class TribesController < ApplicationController
   private
 
   def tribe_params
-    params.require(:tribe).permit(:name, :image_url, :url)
+    params.require(:tribe).permit(:name, :image_url, :url, :image )
     end
 
 end
