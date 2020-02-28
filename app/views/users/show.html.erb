@@ -12,8 +12,17 @@
 <br>
 <%=button_to "Select My Tribes", '/tribe_select', method: :get%>
 <%if @user.admin %>
-<%=button_to "Create A Tribe", new_tribe_path, method: :get%>
+  <%=button_to "Create A Tribe", new_tribe_path, method: :get%>
 <%end%>
-<br>
+<hr>
+
+<h2>My Upcoming Rides</h2>
+
+<%@user.rides.each do |ride|%>
+  <%="#{ride.tribe.name} - #{ride.date.strftime("%A %d %B")} -  #{ride.instructor} -  #{ride.time.strftime("%I:%M %p")}  - #{ride.format} -  #{ride.duration} mins"%>  <br>
+<%end%>
+
+<hr>
+
 <%=button_to "Log Out", logout_path %>
 
