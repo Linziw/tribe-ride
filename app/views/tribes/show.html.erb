@@ -5,7 +5,7 @@
 <p>Upcoming Rides<p>
 
 <%@tribe.rides.each do |ride|%>
-<p><%=link_to "#{ride.date.strftime("%A %d %B")} -  #{ride.instructor} -  #{ride.time.strftime("%I:%M %p")} #{ride.format} -  #{ride.duration} mins", tribe_ride_path(ride)%></p>
+<p><%=link_to "#{ride.date.strftime("%A %d %B")} -  #{ride.instructor} -  #{ride.time.strftime("%I:%M %p")} #{ride.format} -  #{ride.duration} mins", tribe_ride_path(@tribe, ride)%></p>
 <%end%>
 
 <%if @user.admin%>

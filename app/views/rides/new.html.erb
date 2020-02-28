@@ -6,7 +6,8 @@
   <%= f.hidden_field :tribe_id, :value => params[:tribe_id] %>
 
   <%= f.label :instructor %>
-   <%= f.text_field :instructor %><br>
+  <%= f.select :instructor, options_for_select([["Select One", ""], "Alex Toussant", "Ally Love", "Ben Alldis", "Christine D'Ercole", "Cody Rigsby", "Denis Morton", "Emma Lovewell", "Erik Jager", "Hannah Marie Corbin", "Hannah Frankson", "Irene Scholz", "Jenn Sherman", "Jess King", "Kendall Toole", "Leanne Hainsby", "Matt Wilpers", 
+  "Olivia Amato", "Robin Arzon", "Sam Yo", "Tunde Oyeneyin"]) %><br>
 <br>
   <%= f.label :date %>
   <%= f.date_field :date %> <br>
@@ -21,7 +22,7 @@
   <br>
 
     <%= f.label :format %>
-  <%= f.text_field :format %> <br>
+  <%= f.select :format, options_for_select([["Select One", ""], "Live", "Recorded"]) %><br>
   <br>
 
   <%= f.submit "Add Ride" %>
