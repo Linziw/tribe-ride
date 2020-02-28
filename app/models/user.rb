@@ -4,4 +4,14 @@ class User < ApplicationRecord
   has_many :user_tribes
   has_many :tribes, through: :user_tribes
   has_many :rides, through: :user_rides
+
+  def participating?(ride)
+    binding.pry
+    if self.rides.includes(ride)
+      true
+    else
+     false
+    end
+  end
+
 end

@@ -1,5 +1,9 @@
 <h1><%="#{@ride.date.strftime("%A %d %B")} -  #{@ride.instructor} -  #{@ride.time.strftime("%I:%M %p")}  - #{@ride.format} -  #{@ride.duration} mins"%></h1>
 
+<%if @user.participating?(@ride)%>
+  <p>You are IN!!</p>
+<%end%>
+
 <h3>Participating Users</h3>
 
 <%@ride_users.each do |user|%>

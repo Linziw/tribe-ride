@@ -54,6 +54,7 @@ class RidesController < ApplicationController
     redirect_to tribe_path(@ride.tribe)
   end
 
+
   private
 
   def ride_params
