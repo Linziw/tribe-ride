@@ -51,7 +51,7 @@ class RidesController < ApplicationController
     @ride = Ride.find(params[:id])
     @user.rides << @ride
     @user.save
-    redirect_to tribe_path(@tribe)
+    redirect_to tribe_path(@ride.tribe)
   end
 
   private

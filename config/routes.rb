@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/' => 'sessions#welcome'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+  post '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
   get '/tribe_select' => 'users#tribe_select'
   get 'tribes/:id/rides/:id/join_ride' => 'rides#join_ride'

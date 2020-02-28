@@ -14,4 +14,6 @@
 <%if @user.admin %>
 <%=button_to "Create A Tribe", new_tribe_path, method: :get%>
 <%end%>
+<br>
+<%=button_to "Log Out", logout_path %>
 
