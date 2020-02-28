@@ -6,8 +6,7 @@ class User < ApplicationRecord
   has_many :rides, through: :user_rides
 
   def participating?(ride)
-    binding.pry
-    if self.rides.includes(ride)
+    if self.rides.ids.include?(ride.id)
       true
     else
      false

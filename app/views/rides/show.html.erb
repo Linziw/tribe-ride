@@ -10,5 +10,10 @@
     <p><%=user.username%></p>
 <%end%>
 
-<%=button_to "Join This Ride", "#{@ride.id}/join_ride", method: :get%>
+<%if @user.participating?(@ride)%>
+  <%=button_to "Cancel Ride", user_ride_path(@ride), method: :delete %>
+  <% else %>
+  <%=button_to "Join This Ride", "#{@ride.id}/join_ride", method: :get%>
+<%end%>
+
 <%=button_to "Back to #{@tribe.name}", tribe_path(@tribe), method: :get%>
