@@ -6,10 +6,11 @@
 
 <%@tribe.rides.each do |ride|%>
 <p><%=link_to "#{ride.date.strftime("%A %d %B")} -  #{ride.instructor} -  #{ride.time.strftime("%I:%M %p")} #{ride.format} -  #{ride.duration} mins", tribe_ride_path(@tribe, ride)%></p>
+<%=button_to "Edit Ride", edit_tribe_ride_path(@tribe, ride), method: :get%>
 <%end%>
 
 <%if @user.admin%>
-<%=button_to "Add A Ride", new_tribe_ride_path(@tribe.id), method: :get%>
+<%=button_to "Add A New Ride", new_tribe_ride_path(@tribe.id), method: :get%>
 <%end%>
 
 <%=button_to "Home", user_path(@user), method: :get%>
