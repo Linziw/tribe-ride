@@ -6,7 +6,9 @@
 
 <%@tribe.rides.each do |ride|%>
 <p><%=link_to "#{ride.date.strftime("%A %d %B")} -  #{ride.instructor} -  #{ride.time.strftime("%I:%M %p")} #{ride.format} -  #{ride.duration} mins", tribe_ride_path(@tribe, ride)%></p>
+<p><%=number_of_riders(ride)%> Riders<p>
 <%=button_to "Edit Ride", edit_tribe_ride_path(@tribe, ride), method: :get%>
+<hr>
 <%end%>
 
 <%if @user.admin%>
