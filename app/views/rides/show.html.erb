@@ -1,5 +1,10 @@
 <h1><%="#{@ride.date.strftime("%A %d %B")} -  #{@ride.instructor} -  #{@ride.time.strftime("%I:%M %p")}  - #{@ride.format} -  #{@ride.duration} mins"%></h1>
 
+<h3>Participating Users</h3>
 
+<%@ride_users.each do |user|%>
+    <p><%=user.username%></p>
+<%end%>
 
+<%=button_to "Join This Ride", "#{@ride.id}/join_ride", method: :get%>
 <%=button_to "Back to #{@tribe.name}", tribe_path(@tribe), method: :get%>

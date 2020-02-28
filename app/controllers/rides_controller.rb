@@ -36,12 +36,22 @@ class RidesController < ApplicationController
 
 
   def show
+    @user=User.find(session[:user_id])
     @ride=Ride.find(params[:id])
+    @ride_users = @ride.users
     if params[:tribe_id]
       @tribe=Tribe.find(params[:tribe_id])
     else
       redirect_to tribe_path(@tribe)
     end
+  end
+
+  def join_ride
+    @user=User.find(session[:user_id])
+    @ride = Ride.find(params[:id])
+    @user.rides << @ride
+    @user.save
+    redirect_to tribe_path(@tribe)
   end
 
   private
