@@ -58,6 +58,6 @@ class RidesController < ApplicationController
   private
 
   def ride_params
-  params.require(:ride).permit(:instructor, :date, :time, :duration, :format, :tribe_id)
+  params.require(:ride).permit(:instructor, :date, :time, :duration, :format, :tribe_id, :original_date, :original_time)
   end
 end
