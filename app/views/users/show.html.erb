@@ -19,9 +19,9 @@
 <h2>My Upcoming Rides</h2>
 
 <%@user.rides.each do |ride|%>
-  <p><%="#{ride.tribe.name} - #{ride.date.strftime("%A %d %B")} -  
+  <%=link_to "#{ride.tribe.name} - #{ride.date.strftime("%A %d %B")} -  
   #{ride.instructor} -  #{ride.time.strftime("%I:%M %p")}  - 
-  #{ride.format} -  #{ride.duration} mins"%> 
+  #{ride.format} -  #{ride.duration} mins", ride_path(ride)%> 
   <%=button_to "Cancel Ride", user_ride_path(ride), method: :delete %></p> <br>
 <%end%>
 

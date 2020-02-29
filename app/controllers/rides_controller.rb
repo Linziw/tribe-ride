@@ -42,7 +42,7 @@ class RidesController < ApplicationController
     if params[:tribe_id]
       @tribe=Tribe.find(params[:tribe_id])
     else
-      redirect_to tribe_path(@tribe)
+      @tribe=Tribe.find(@ride.tribe_id)
     end
   end
 
