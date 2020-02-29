@@ -12,9 +12,13 @@
 <%end%>
 
 <p><%=number_of_riders(ride)%> Riders<p>
+
 <%=button_to "Edit Ride", edit_tribe_ride_path(@tribe, ride), method: :get%>
+<%=button_to "Delete Ride", ride_path(ride), method: :delete %>
 <hr>
 <%end%>
+
+
 
 <%if @user.admin%>
 <%=button_to "Add A New Ride", new_tribe_ride_path(@tribe.id), method: :get%>

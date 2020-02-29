@@ -54,6 +54,14 @@ class RidesController < ApplicationController
     redirect_to tribe_path(@ride.tribe)
   end
 
+  def destroy
+    @user=User.find(session[:user_id])
+    @ride=Ride.find(params[:id])
+    @tribe=@ride.tribe
+    @ride.delete
+    redirect_to tribe_path(@tribe)
+  end
+
 
   private
 
