@@ -1,4 +1,5 @@
 <h1><%="#{@ride.date.strftime("%A %d %B")} -  #{@ride.instructor} -  #{@ride.time.strftime("%I:%M %p")}  - #{@ride.format} -  #{@ride.duration} mins"%></h1>
+<p>Originally Broadcast on <%="#{@ride.original_date.strftime("%A %d %B")}"%> at <%="#{@ride.original_time.strftime("%I:%M %p")}"%> <p>
 
 <%if @user.participating?(@ride)%>
   <p>You are IN!!</p>
