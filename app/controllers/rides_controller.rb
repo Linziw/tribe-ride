@@ -15,6 +15,8 @@ class RidesController < ApplicationController
     @tribe=Tribe.find(params[:ride][:tribe_id])
     @ride=Ride.new(ride_params)
     @ride.save
+    @user.tribes<<@tribe
+    @user
     redirect_to tribe_path(@tribe)
   end
 
