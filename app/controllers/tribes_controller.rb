@@ -18,6 +18,17 @@ class TribesController < ApplicationController
     @user= User.find(session[:user_id])
   end
 
+  def edit
+    @tribe=Tribe.find(params[:id])
+  end
+
+  def update
+    @tribe=Tribe.find(params[:id])
+    @tribe.update(tribe_params)
+    @tribe.save
+    redirect_to tribe_path(@tribe)
+  end
+
   
 
   private

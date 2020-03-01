@@ -23,6 +23,7 @@
 
 
 <%if @user.admin%>
+  <%=button_to "Edit Tribe", edit_tribe_path(@tribe), method: :get%>
   <%=button_to "Add A New Ride", new_tribe_ride_path(@tribe.id), method: :get%>
 <%end%>
 

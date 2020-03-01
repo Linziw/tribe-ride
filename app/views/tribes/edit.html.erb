@@ -1,0 +1,19 @@
+<h1>Edit your tribe</h1>
+
+<%= form_for @tribe do |f| %>
+
+
+  <%= f.label :name %>
+  <%= f.text_field :name %> <br>
+<br>
+
+ <%= f.label :image %>
+  <%= f.file_field :image%> <br>
+  <br>
+
+    <%= f.label :url %>
+  <%= f.text_field :url %> <br>
+  <br>
+
+  <%= f.submit "Edit Tribe" %>
+<% end %>
