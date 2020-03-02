@@ -12,6 +12,10 @@
   <%end%>
 
   <p><%=number_of_riders(ride)%> Riders<p>
+
+  <%if @user.participating?(ride)%>
+    <p>You are IN!!</p>
+  <%end%>
  
    <%if @user.admin%>
      <%=button_to "Edit Ride", edit_tribe_ride_path(@tribe, ride), method: :get%>
