@@ -18,7 +18,7 @@
 
 <h2>My Upcoming Rides</h2>
 
-<%@user.rides.each do |ride|%>
+<%@rides_sorted.each do |ride|%>
   <%=link_to "#{ride.tribe.name} - #{ride.date.strftime("%A %d %B")} -  
   #{ride.instructor} -  #{ride.time.strftime("%I:%M %p")}  - 
   #{ride.format} -  #{ride.duration} mins", ride_path(ride)%> 
