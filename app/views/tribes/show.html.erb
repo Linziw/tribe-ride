@@ -4,7 +4,7 @@
 
 <p>Upcoming Rides<p>
 
-<%@tribe.rides.each do |ride|%>
+<%@rides_sorted.each do |ride|%>
   <p><%=link_to "#{ride.date.strftime("%A %d %B")} -  #{ride.instructor} -  #{ride.time.strftime("%I:%M %p")} #{ride.format} -  #{ride.duration} mins", tribe_ride_path(@tribe, ride)%></p>
 
   <%if ride.format == "Recorded" && ride.original_date != nil%>
