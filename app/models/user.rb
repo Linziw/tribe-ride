@@ -13,4 +13,8 @@ class User < ApplicationRecord
     end
   end
 
+  def member_and_participating
+    self.rides.select {|r| self.tribes.include?(r.tribe)}
+  end
+
 end

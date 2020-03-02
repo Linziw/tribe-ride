@@ -13,8 +13,9 @@ class UsersController < ApplicationController
 
   def show
     @user=User.find(params[:id])
-    @rides = @user.rides
+    @rides = @user.member_and_participating
     @rides_sorted = @rides.sort_by { |r| r['date'] }
+    
   end
 
   def tribe_select
