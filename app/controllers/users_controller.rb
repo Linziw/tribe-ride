@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def facebook_create
     @user = User.find_or_create_by(uid: auth['uid']) do |u|
-      u.username = auth['info']['name']
+      u.name = auth['info']['name']
       u.email = auth['info']['email']
       u.password = SecureRandom.urlsafe_base64
     end
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-  params.require(:user).permit(:username, :password, :email, :peloton_name, :admin, :uid)
+  params.require(:user).permit(:name, :password, :email, :peloton_name, :admin, :uid)
   end
 
   def auth
