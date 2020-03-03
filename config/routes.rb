@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
-  get '/tribe_select' => 'users#tribe_select'
   get 'tribes/:id/rides/:id/join_ride' => 'rides#join_ride'
+  patch 'user_tribes' => 'user_tribes#update'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

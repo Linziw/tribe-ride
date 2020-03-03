@@ -1,9 +1,0 @@
-<h1>Select your Tribes</h1>
-  
-<%=form_for @user do |f|%>
-<%=f.collection_check_boxes :tribe_ids, Tribe.all, :id, :name %><br/>
-
-<br>
-<%=f.submit "Select my Tribes"%>
-
-<% end %>

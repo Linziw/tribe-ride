@@ -13,7 +13,7 @@ aka "<%=@user.peloton_name%>"
   <%end%>
 
 <br>
-<%=button_to "Select My Tribes", '/tribe_select', method: :get%>
+<%=button_to "Select My Tribes", edit_user_tribe_path, method: :get%>
 <%if @user.admin %>
   <%=button_to "Create A Tribe", new_tribe_path, method: :get%>
 <%end%>

@@ -1,0 +1,16 @@
+<h1>Select your Tribes</h1>
+
+
+<%= form_tag (user_tribe_path), :method => :patch do %>
+
+  <% @tribes.each do |tribe|%>
+    <%=label_tag tribe.name%>
+    <%= check_box_tag 'tribe_ids[]', tribe.id %>
+  <% end %>
+
+    <br>
+    <br>
+  <%= submit_tag "Select my Tribes" %>
+  <%end%>
+
+

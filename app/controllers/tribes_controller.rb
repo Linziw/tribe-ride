@@ -31,7 +31,6 @@ class TribesController < ApplicationController
   end
 
   
-
   private
 
   def tribe_params
