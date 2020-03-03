@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :rides
   resources :users
 
+  get '/auth/facebook/callback' => 'users#facebook_create'
   get '/' => 'sessions#welcome'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
