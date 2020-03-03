@@ -11,7 +11,10 @@
 <h3>Participating Users</h3>
 
 <%@ride_users.each do |user|%>
-    <p><%=user.username%> aka "<%=user.peloton_name%>"</p>
+    <p><%=user.username%>
+    <%if user.peloton_name != nil%>
+       aka "<%=user.peloton_name%>"
+    <%end%></p>
 <%end%>
 
 <%if @user.participating?(@ride)%>

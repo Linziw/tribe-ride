@@ -1,4 +1,7 @@
-<h3><%=@user.username%> aka "<%=@user.peloton_name%>" </h3>
+<h3><%=@user.username%> 
+<%if @user.peloton_name != nil%>
+aka "<%=@user.peloton_name%>"
+<%end%>
 
 <h2>Your Joined Tribes </h2>
 

@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       u.password = SecureRandom.urlsafe_base64
     end
     session[:user_id] = @user.id
-    redirect_to "/users/#{@user.id}"
+    redirect_to user_path(@user)
   end
 
 
