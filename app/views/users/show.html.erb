@@ -26,14 +26,19 @@ aka "<%=@user.peloton_name%>"
   #{ride.instructor} -  #{ride.time.strftime("%I:%M %p")}  - 
   #{ride.format} -  #{ride.duration} mins", ride_path(ride)%> 
 
+
   <%if ride.format == "Recorded" && ride.original_date != nil%>
 <p>Originally Broadcast on <%="#{ride.original_date.strftime("%A %d %B")}"%> at <%="#{ride.original_time.strftime("%I:%M %p")}"%> <p>
+ <%else%>
+ <br>
+ <br>
 <%end%>
 
   <%=button_to "Cancel Ride", user_ride_path(ride), method: :delete %></p> <br>
+  
+  <hr>
 <%end%>
 
-<hr>
 
 <%=button_to "Edit Profile", edit_user_path(@user), method: :get %>
 <%=button_to "Log Out", logout_path %>
