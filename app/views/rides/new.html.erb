@@ -10,7 +10,7 @@
   "Olivia Amato", "Robin Arzon", "Sam Yo", "Tunde Oyeneyin"]) %><br>
 <br>
   <%= f.label :date %>
-  <%= f.date_field :date %> <br>
+  <%= f.date_field :date, min: Date.today %><br>
   <br>
 
   <%= f.label :time %>
