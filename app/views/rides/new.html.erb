@@ -6,8 +6,7 @@
   <%= f.hidden_field :tribe_id, :value => params[:tribe_id] %>
 
   <%= f.label :instructor %>
-  <%= f.select :instructor, options_for_select([["Select One", ""], "Alex Toussant", "Ally Love", "Ben Alldis", "Christine D'Ercole", "Cody Rigsby", "Denis Morton", "Emma Lovewell", "Erik Jager", "Hannah Marie Corbin", "Hannah Frankson", "Irene Scholz", "Jenn Sherman", "Jess King", "Kendall Toole", "Leanne Hainsby", "Matt Wilpers", 
-  "Olivia Amato", "Robin Arzon", "Sam Yo", "Tunde Oyeneyin"]) %><br>
+  <%= f.select :instructor, instructors, :include_blank => "Select One" %><br>
 <br>
   <%= f.label :date %>
   <%= f.date_field :date, min: Date.today %><br>
@@ -26,7 +25,7 @@
   <br>
 
    <%= f.label :Original_broadcast_date %>
-  <%= f.date_field :original_date %> <br>
+  <%= f.date_field :original_date, max: Date.today %> <br>
   <br>
 
   <%= f.label :original_broadcast_time %>
