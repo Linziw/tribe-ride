@@ -6,7 +6,7 @@ aka "<%=@user.peloton_name%>"
 <h2>Your Joined Tribes </h2>
 
 
-<%@user.tribes.each do |tribe|%>
+<%@user_tribes.each do |tribe|%>
   <%=link_to (image_tag (tribe.thumbnail)), tribe_path(tribe) %><br>  
   <%=link_to tribe.name, tribe_path(tribe)%><br>
   
