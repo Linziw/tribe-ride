@@ -21,7 +21,7 @@
   <br>
 
     <%= f.label :format %>
-  <%= f.select :format, options_for_select([["Select One", ""], "Live", "Recorded"]) %><br>
+  <%= f.select :format, ['Live', 'Recorded'], :include_blank => "Select One" %><br>
   <br>
 
    <%= f.label :Original_broadcast_date %>
@@ -29,7 +29,7 @@
   <br>
 
   <%= f.label :original_broadcast_time %>
-  <%= f.time_field :original_time %> <br>
+  <%= f.time_field :original_time,  %> <br>
   <br>
 
   <%= f.submit "Add Ride" %>
