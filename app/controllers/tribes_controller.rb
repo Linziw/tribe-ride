@@ -38,6 +38,18 @@ class TribesController < ApplicationController
     redirect_to tribe_path(@tribe)
   end
 
+  def destroy
+    @user=User.find(session[:user_id])
+    @tribe=Tribe.find(params[:id])
+    if @tribe.owner?(@user) && @user.admin?
+      @tribe.rides.destroy_all
+      @tribe.destroy
+      redirect_to user_path(@user)
+    else
+    redirect_to tribe_path(@tribe)
+    end
+  end
+
   
   private
 
