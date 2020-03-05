@@ -1,5 +1,6 @@
 class TribesController < ApplicationController
   def index
+    @user = User.find(session[:user_id])
     @tribes = Tribe.all
   end
 

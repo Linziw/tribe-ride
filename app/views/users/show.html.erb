@@ -14,6 +14,7 @@ aka "<%=@user.peloton_name%>"
 
 <br>
 <%=button_to "Select My Tribes", edit_user_tribe_path, method: :get%>
+<%=button_to "View All Tribes", tribes_path, method: :get%>
 <%if @user.admin %>
   <%=button_to "Create A Tribe", new_tribe_path, method: :get%>
 <%end%>
