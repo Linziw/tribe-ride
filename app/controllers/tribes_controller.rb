@@ -9,8 +9,11 @@ class TribesController < ApplicationController
   end
 
   def create
+    @user=User.find(session[:user_id])
     @tribe=Tribe.new(tribe_params)
+    @tribe.owner_id=@user.id
     @tribe.save
+    @user.tribes<<@tribe
     redirect_to tribe_path(@tribe)
   end
 
