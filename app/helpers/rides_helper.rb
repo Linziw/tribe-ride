@@ -7,8 +7,15 @@ module RidesHelper
   def instructors 
     ["Alex Toussant", "Ally Love", "Ben Alldis", "Christine D'Ercole", "Cody Rigsby", "Denis Morton", "Emma Lovewell", "Erik Jager", "Hannah Marie Corbin", "Hannah Frankson", "Irene Scholz", "Jenn Sherman", "Jess King", "Kendall Toole", "Leanne Hainsby", "Matt Wilpers", 
   "Olivia Amato", "Robin Arzon", "Sam Yo", "Tunde Oyeneyin"]
-    end
+  end
 
-  
+  def display_date(date)
+    date.strftime('%A %d %B')
+    #{ride.original_time.strftime('%I:%M %p')"
+  end
+
+  def display_time(time)
+    time.strftime('%I:%M %p')
+  end
 
 end
