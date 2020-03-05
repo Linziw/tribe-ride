@@ -25,6 +25,10 @@ class TribesController < ApplicationController
 
   def edit
     @tribe=Tribe.find(params[:id])
+    @user= User.find(session[:user_id])
+    if !@tribe.owner?(@user)
+      redirect_to tribe_path(@tribe)
+    end
   end
 
   def update

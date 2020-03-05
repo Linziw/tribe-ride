@@ -11,4 +11,8 @@ class Tribe < ApplicationRecord
   def main_image
     self.image.variant(resize: '600x600')
   end
+
+  def owner?(user)
+    self.owner_id == user.id
+  end
 end
