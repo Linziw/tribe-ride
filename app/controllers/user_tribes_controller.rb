@@ -7,9 +7,15 @@ class UserTribesController < ApplicationController
 
   def update
     @user=User.find(session[:user_id])
-    @user.tribe_ids = params[:tribe_ids]
+    @user.tribe_ids = user_tribes_params[:tribe_ids]
     @user.save
   redirect_to user_path(@user)
+  end
+
+  private
+
+  def user_tribes_params
+  params.require(:user).permit(tribe_ids:[])
   end
 
 
