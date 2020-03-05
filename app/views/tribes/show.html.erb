@@ -19,7 +19,7 @@
      <%=button_to "Join This Ride", "#{@tribe.id}/rides/#{ride.id}/join_ride", method: :get%>
   <%end%>
  
-   <%if @user.admin%>
+   <%if @user.admin && @tribe.owner?(@user)%>
      <%=button_to "Edit Ride", edit_tribe_ride_path(@tribe, ride), method: :get%>
      <%=button_to "Delete Ride", ride_path(ride), method: :delete %>
    <%end%>
@@ -28,9 +28,10 @@
 
 
 
-<%if @user.admin%>
+<%if @user.admin && @tribe.owner?(@user)%>
   <%=button_to "Edit Tribe", edit_tribe_path(@tribe), method: :get%>
   <%=button_to "Add A New Ride", new_tribe_ride_path(@tribe.id), method: :get%>
 <%end%>
 
+<%=button_to "Leave Tribe", user_tribe_path, method: :delete%>
 <%=button_to "Home", user_path(@user), method: :get%>

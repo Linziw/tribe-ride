@@ -6,7 +6,7 @@ class RidesController < ApplicationController
     if params[:tribe_id] && @tribe.owner?(@user)
       @ride=Ride.new
     else
-      redirect_to user_path(@user)
+      redirect_to tribe_path(@tribe)
     end
   end
 
