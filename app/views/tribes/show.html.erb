@@ -1,4 +1,7 @@
 <h1><%=@tribe.name%> - <%=@tribe.users.count%> Members</h1>
+<%if @tribe.owner?(@user)%>
+  <h2>(You own this tribe!)</h2>
+  <%end%>
 
 <%= image_tag @tribe.main_image %>
 
@@ -33,5 +36,7 @@
   <%=button_to "Add A New Ride", new_tribe_ride_path(@tribe.id), method: :get%>
 <%end%>
 
-<%=button_to "Leave Tribe", user_tribe_path, method: :delete%>
+<%if !@tribe.owner?(@user)%>
+ <%=button_to "Leave Tribe", user_tribe_path, method: :delete%>
+<%end%>
 <%=button_to "Home", user_path(@user), method: :get%>
