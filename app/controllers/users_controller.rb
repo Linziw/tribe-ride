@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
   def index
     @tribe = Tribe.find(params[:tribe_id])
-    @users = @tribe.users
+    @users = @tribe.users.uniq
   end
 
   
