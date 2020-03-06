@@ -30,8 +30,8 @@
   <%= f.label :milestone, "Milestone? Leave blank, select one or write your own" %>:
   <%= f.text_field :milestone, list: 'milestones_autocomplete' %>
   <datalist id="milestones_autocomplete">
-    <% @user_rides.each do |ride| %>
-      <option value="<%= ride.milestone %>"></option>
+    <% @milestones.each do |milestone| %>
+      <option value="<%=milestone %>"></option>
     <% end %>
   </datalist>
 
