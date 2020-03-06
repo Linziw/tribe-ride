@@ -18,4 +18,13 @@ class User < ApplicationRecord
     self.rides.select {|r| self.tribes.include?(r.tribe)}
   end
 
+  def milestone_present?(ride)
+    r = self.user_rides.find_by(ride_id: ride.id)
+    true if r.milestone != "" && r.milestone != nil
+  end
+
+  def display_milestone(ride)
+    self.user_rides.find_by(ride_id: ride.id).milestone
+  end
+
 end
