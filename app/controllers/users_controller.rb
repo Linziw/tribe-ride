@@ -42,6 +42,11 @@ class UsersController < ApplicationController
     @user=User.find(session[:user_id])
   end
 
+  def index
+    @tribe = Tribe.find(params[:tribe_id])
+    @users = @tribe.users
+  end
+
   
   private
 

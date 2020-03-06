@@ -24,11 +24,11 @@
   <%= f.select :format, ['Live', 'Recorded'], :include_blank => "Select One" %><br>
   <br>
 
-   <%= f.label :Original_broadcast_date %>
+   <%= f.label :'Original Broadcast Date, (only complete if format is recorded)' %>
   <%= f.date_field :original_date, max: Date.today %> <br>
   <br>
 
-  <%= f.label :original_broadcast_time %>
+  <%= f.label :'Original Broadcast Time, (only complete if format is recorded)' %>
   <%= f.time_field :original_time  %> <br>
   <br>
 

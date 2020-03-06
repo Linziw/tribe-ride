@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   #nested resource routes
   resources :tribes do
     resources :rides
+    resources :users 
   end
 
   resources :user_rides

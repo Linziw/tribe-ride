@@ -1,0 +1,13 @@
+<h1><%=@tribe.name%> - <%=@users.count%> members </h1>
+
+<%@users.each do |user|%>
+<p><%=user.name%>
+  <%if user.peloton_name != nil%>
+    aka "<%=user.peloton_name%>"
+  <%end%>
+  <%if @tribe.owner?(user)%>
+        - Head of Tribe
+  <%end%></p></p>
+<%end%>
+
+<%=button_to "Back to #{@tribe.name}", tribe_path(@tribe), method: :get%>
