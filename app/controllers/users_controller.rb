@@ -47,6 +47,13 @@ class UsersController < ApplicationController
     @users = @tribe.users.uniq
   end
 
+  def destroy
+    @user=User.find(session[:user_id])
+    @user.destroy
+    session.delete(:user_id)
+    redirect_to "/"
+  end
+
   
   private
 
