@@ -20,8 +20,27 @@
 <%if @user.participating?(@ride)%>
   <%=button_to "Cancel Ride", user_ride_path(@ride), method: :delete %>
   <% else %>
-  <%=button_to "Join This Ride", "#{@ride.id}/join_ride", method: :get%>
+  
+<hr>
+  <%= form_for @user_ride do |f| %>
+  <%= f.hidden_field :ride_id, value: @ride.id %>
+  <%= f.label :milestone, "Milestone? Leave blank, select one or write your own" %>:
+  <%= f.text_field :milestone, list: 'milestones_autocomplete' %>
+  <datalist id="milestones_autocomplete">
+    <% @user_rides.each do |ride| %>
+      <option value="<%= ride.milestone %>"></option>
+    <% end %>
+  </datalist>
+
+  <br>
+  <br>
+  <%= f.submit "Join This Ride!" %>
+<% end %>
+
+
 <%end%>
+
+<hr>
 
 <%=button_to "Back to #{@tribe.name}", tribe_path(@tribe), method: :get%>
 <%=button_to "Home", user_path(@user), method: :get%>

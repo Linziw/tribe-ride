@@ -1,4 +1,4 @@
-<h1><%=@tribe.name%> - <%=link_to "#{@tribe.users.count} Members", tribe_users_path(@tribe)%></h1>
+<h1><%=@tribe.name%> - <%=link_to "#{@tribe.users.count} Member(s)", tribe_users_path(@tribe)%></h1>
 <%if @tribe.owner?(@user)%>
   <h2>(You own this tribe!)</h2>
   <%end%>

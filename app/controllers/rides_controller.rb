@@ -41,6 +41,8 @@ class RidesController < ApplicationController
     @user=User.find(session[:user_id])
     @ride=Ride.find(params[:id])
     @ride_users = @ride.users
+    @user_ride = UserRide.new(user_id: @user.id, ride_id:@ride.id)
+    @user_rides = UserRide.all
     if params[:tribe_id]
       @tribe=Tribe.find(params[:tribe_id])
     else
