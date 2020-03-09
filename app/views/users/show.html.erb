@@ -1,12 +1,25 @@
-<h3><%=@user.name%> 
-<%if @user.peloton_name != nil%>
-aka "<%=@user.peloton_name%>"
-<%end%>
+ <section class="page-section bg-primary" id="about">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          
+          <h2 class="text-white mt-0"><%=@user.name%> 
+             <%if @user.peloton_name != nil%>
+             aka "<%=@user.peloton_name%>"
+            <%end%></h2>
 
-<h2>Your Joined Tribes </h2>
+        </div>
+      </div>
+    </div>
+  </section>
 
+<section class="page-section" id="services">
+    <div class="container">
+      <h2 class="text-center mt-0">Your Joined Tribes</h2>
+    
 
 <%@user_tribes.each do |tribe|%>
+
   <%=link_to (image_tag (tribe.thumbnail)), tribe_path(tribe) %><br>  
   <%=link_to tribe.name, tribe_path(tribe)%><br>
   
@@ -41,6 +54,6 @@ aka "<%=@user.peloton_name%>"
 <%end%>
 
 
-<%=button_to "Edit Profile", edit_user_path(@user), method: :get %>
+<%=button_to "Edit/Delete Profile", edit_user_path(@user), method: :get %>
 <%=button_to "Log Out", logout_path %>
 

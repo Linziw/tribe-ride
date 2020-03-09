@@ -1,10 +1,24 @@
-<%= form_tag('/login') do %>
+
+
+ <!-- About Section -->
+  <section class="page-section bg-primary" id="about">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="text-white mt-0">
+          
+          <%= form_tag('/login') do %>
   
   <%=label_tag 'name'%>
   <%=text_field_tag 'name'%><br>
 
   <%=label_tag 'password'%>
-  <%=password_field_tag 'password'%><br>
+  <%=password_field_tag 'password'%><br></h2>
   
-  <%= submit_tag 'Login' %>
+  <%= submit_tag 'Login', class: "btn btn-light btn-xl js-scroll-trigger" %>
 <% end %>
+
+        </div>
+      </div>
+    </div>
+  </section>
