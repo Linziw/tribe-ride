@@ -1,63 +1,50 @@
- 
-  <body>
-  <body id="page-top">
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 navbar-scrolled" id="mainNav">
+<section class="page-section" id="services">
     <div class="container">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto my-2 my-lg-0">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#services">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-
-  </body>
- 
- <section class="page-section bg-primary" id="about">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
-          
-          <h2 class="text-white mt-0"><%=@user.name%> 
-             <%if @user.peloton_name != nil%>
+    <h1 class="text-center mt-0"> <%=@user.name%> 
+        <%if @user.peloton_name != nil%>
              aka "<%=@user.peloton_name%>"
-            <%end%></h2>
-
+            <%end%></h1>
+    
+      <h2 class="text-center mt-0">Your Joined Tribes</h2>
+      <hr class="divider my-4">
+      <div class="row">
+        
+        <%@user_tribes.each do |tribe|%>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mt-5">
+            <%=link_to (image_tag (tribe.thumbnail)), tribe_path(tribe) %>
+            <h3 class="h4 mb-2"> <%=link_to tribe.name, tribe_path(tribe)%></h3>
+          </div>
+        </div>
+        <%end%>
+       
+       
+        
         </div>
       </div>
     </div>
   </section>
 
-<section class="page-section" id="services">
-    <div class="container">
-      <h2 class="text-center mt-0">Your Joined Tribes</h2>
-    
-
-<%@user_tribes.each do |tribe|%>
-
-  <%=link_to (image_tag (tribe.thumbnail)), tribe_path(tribe) %><br>  
-  <%=link_to tribe.name, tribe_path(tribe)%><br>
-  
-  <%end%>
 
 <br>
-<%=button_to "Select My Tribes", edit_user_tribe_path, method: :get%>
-<%=button_to "View All Tribes", tribes_path, method: :get%>
+
+<div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="text-white mt-0">We've got what you need!</h2>
+          <hr class="divider light my-4">
+          <p class="text-white-50 mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!</p>
+          <a><%=link_to "Select My Tribes", edit_user_tribe_path, class:"btn btn-primary btn-xl js-scroll-trigger"%></a>
+           <a><%=link_to "View All Tribes", tribes_path, class:"btn btn-primary btn-xl js-scroll-trigger"%></a>
+           
+           <%if @user.admin %>
+             <a><%=link_to "Create A Tribe", new_tribe_path, class:"btn btn-primary btn-xl js-scroll-trigger"%><a>
+          <%end%>
+            
+        </div>
+      </div>
+
+
+
 <%if @user.admin %>
   <%=button_to "Create A Tribe", new_tribe_path, method: :get%>
 <%end%>
