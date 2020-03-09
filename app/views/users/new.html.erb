@@ -1,5 +1,12 @@
+<section class="page-section bg-primary" id="about">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="text-white mt-0">Create A TribeRide account!
 
-<%= form_for @user do |f| %>
+          <hr class="divider light my-4">
+         
+          <%= form_for @user do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %> <br>
 <br>
@@ -17,8 +24,14 @@
 
     <%= f.label :admin %>
   <%= f.check_box :admin %> <br>
+  </h2>
 
   <br>
 
-  <%= f.submit "Signup" %>
+  <%= f.submit "Signup", class: "btn btn-light btn-xl js-scroll-trigger" %>
 <% end %>
+    
+        </div>
+      </div>
+    </div>
+  </section>
