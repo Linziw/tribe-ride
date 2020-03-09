@@ -29,10 +29,9 @@
 <br>
 
 <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
-          <h2 class="text-white mt-0">We've got what you need!</h2>
-          <hr class="divider light my-4">
-          <p class="text-white-50 mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!</p>
+       
+        
+          
           <a><%=link_to "Select My Tribes", edit_user_tribe_path, class:"btn btn-primary btn-xl js-scroll-trigger"%></a>
            <a><%=link_to "View All Tribes", tribes_path, class:"btn btn-primary btn-xl js-scroll-trigger"%></a>
            
@@ -40,17 +39,13 @@
              <a><%=link_to "Create A Tribe", new_tribe_path, class:"btn btn-primary btn-xl js-scroll-trigger"%><a>
           <%end%>
             
-        </div>
-      </div>
+        
+  </div>
+<br>
 
-
-
-<%if @user.admin %>
-  <%=button_to "Create A Tribe", new_tribe_path, method: :get%>
-<%end%>
-<hr>
-
-<h2>My Upcoming Rides</h2>
+<section class="page-section bg-dark text-white">
+    <div class="container text-center">
+      <h2 class="mb-4">My Upcoming Rides</h2>
 
 <%@rides_sorted.each do |ride|%>
   <%=link_to "#{ride.tribe.name} - #{display_date(ride.date)} -  
@@ -65,12 +60,19 @@
  <br>
 <%end%>
 
-  <%=button_to "Cancel Ride", user_ride_path(ride), method: :delete %> <br>
+  <%=button_to "Cancel Ride", user_ride_path(ride), method: :delete, class: "btn btn-light btn-xl" %> <br>
   
-  <hr>
+  <hr class="divider my-4">
 <%end%>
 
 
-<%=button_to "Edit/Delete Profile", edit_user_path(@user), method: :get %>
-<%=button_to "Log Out", logout_path %>
+<%=button_to "Edit/Delete Profile", edit_user_path(@user), class: "btn btn-primary btn-xl js-scroll-trigger" %>
+<br>
+<%=button_to "Log Out", logout_path, class: "btn btn-primary btn-xl js-scroll-trigger" %>
+
+    </div>
+  </section>
+
+
+
 
