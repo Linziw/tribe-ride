@@ -1,5 +1,6 @@
-<h1><%=@tribe.name%> - <%=@users.count%> member(s) </h1>
+<h1 class="heading"><%=@tribe.name%> - <%=@users.count%> member(s) </h1>
 
+<div class="small-text-white">
 <%@users.each do |user|%>
 <p><%=user.name%>
   <%if user.peloton_name != nil%>
@@ -7,7 +8,10 @@
   <%end%>
   <%if @tribe.owner?(user)%>
         - Head of Tribe
-  <%end%></p></p>
+  <%end%></p>
 <%end%>
+</div>
 
-<%=button_to "Back to #{@tribe.name}", tribe_path(@tribe), method: :get%>
+<div id="my_centered_buttons">
+<%=link_to "Back to #{@tribe.name}", tribe_path(@tribe), class: "btn"%>
+</div>
