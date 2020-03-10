@@ -1,86 +1,62 @@
-<h1><%=@tribe.name%> - <%=link_to "#{@tribe.users.count} Member(s)", tribe_users_path(@tribe)%></h1>
+<h1 class="heading"><%=@tribe.name%> - <%=link_to "#{@tribe.users.count} Member(s)", tribe_users_path(@tribe)%></h1>
 <%if @tribe.owner?(@user)%>
-  <h2>(You own this tribe!)</h2>
+  <h2 class="small-text-white">(You own this tribe!)</h2>
   <%end%>
 
+<div class="center">
 <%= image_tag @tribe.main_image %>
+</div>
 
-<p>Upcoming Rides<p>
+<p class="small-text-white">Upcoming Rides<p>
 
 <%@rides_sorted.each do |ride|%>
-  <p><%=link_to "#{display_date(ride.date)} -  #{ride.instructor} -  #{display_time(ride.time)} #{ride.format} -  #{ride.duration} mins", tribe_ride_path(@tribe, ride)%></p>
+  <p class="small-text-white"><%=link_to "#{display_date(ride.date)} -  #{ride.instructor} -  #{display_time(ride.time)} #{ride.format} -  #{ride.duration} mins", tribe_ride_path(@tribe, ride), class: "small-text-white"%></p>
 
   <%if ride.format == "Recorded" && ride.original_date != nil%>
-    <p>Originally Broadcast on <%="#{display_date(ride.original_date)}"%> at <%="#{display_time(ride.original_time)}"%> <p>
+    <p class="small-text-white">Originally Broadcast on <%="#{display_date(ride.original_date)}"%> at <%="#{display_time(ride.original_time)}"%> <p>
   <%end%>
 
-  <p><%=number_of_riders(ride)%> Riders<p>
+  <p class="small-text-white"><%=number_of_riders(ride)%> Riders<p>
 
   <%if @user.participating?(ride)%>
-    <p>You are IN!!</p>
+    <p class="small-text-white">You are IN!!</p>
     <%else%>
-     <%=button_to "Join This Ride", "#{@tribe.id}/rides/#{ride.id}/join_ride", method: :get%>
+    <div id="my_centered_buttons">
+     <%=link_to "Join This Ride", "#{@tribe.id}/rides/#{ride.id}/join_ride", class: "btn"%>
+     </div>
   <%end%>
+
+  <br>
  
    <%if @user.admin && @tribe.owner?(@user)%>
-     <%=button_to "Edit Ride", edit_tribe_ride_path(@tribe, ride), method: :get%>
-     <%=button_to "Delete Ride", ride_path(ride), method: :delete %>
+   <div id="my_centered_buttons">
+     <%=button_to "Edit Ride", edit_tribe_ride_path(@tribe, ride), method: :get, class: "btn-small"%>
+     <%=button_to "Delete Ride", ride_path(ride), method: :delete, class: "btn-small" %>
+     </div>
    <%end%>
   <hr>
 <%end%>
 
 
-
+<div id="my_centered_buttons">
 <%if @user.admin && @tribe.owner?(@user)%>
-  <%=button_to "Edit Tribe", edit_tribe_path(@tribe), method: :get%>
-  <%=button_to "Add A New Ride", new_tribe_ride_path(@tribe.id), method: :get%>
+ <%=button_to "Edit Tribe", edit_tribe_path(@tribe), method: :get, class: "red-btn"%>
+  <%=button_to "Add A New Ride", new_tribe_ride_path(@tribe.id), method: :get, class: "red-btn"%>
 <%end%>
 
 <%if !@tribe.owner?(@user)%>
- <%=button_to "Leave Tribe", user_tribe_path, method: :delete%>
+ <%=button_to "Leave Tribe", user_tribe_path, method: :delete, class:"btn"%>
 <%end%>
 
 <%if @user.admin && @tribe.owner?(@user)%>
-  <%=button_to "Delete Tribe", tribe_path(@tribe), method: :delete%>
+  <%=button_to "Delete Tribe", tribe_path(@tribe), method: :delete, class: "red-btn"%>
 <%end%>
+</div>
 
+<hr>
 
-<%=button_to "Home", user_path(@user), method: :get%>
+<div id="my_centered_buttons">
+<%=button_to "Home", user_path(@user), method: :get, class: "btn"%>
+<div>
 
- <!-- Services Section -->
-  <section class="page-section" id="services">
-    <div class="container">
-      <h2 class="text-center mt-0">At Your Service</h2>
-      <hr class="divider my-4">
-      <div class="row">
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="mt-5">
-            <i class="fas fa-4x fa-gem text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Sturdy Themes</h3>
-            <p class="text-muted mb-0">Our themes are updated regularly to keep them bug free!</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="mt-5">
-            <i class="fas fa-4x fa-laptop-code text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Up to Date</h3>
-            <p class="text-muted mb-0">All dependencies are kept current to keep things fresh.</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="mt-5">
-            <i class="fas fa-4x fa-globe text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Ready to Publish</h3>
-            <p class="text-muted mb-0">You can use this design as is, or you can make changes!</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="mt-5">
-            <i class="fas fa-4x fa-heart text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Made with Love</h3>
-            <p class="text-muted mb-0">Is it really open source if it's not made with love?</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+ 
