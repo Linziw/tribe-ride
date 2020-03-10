@@ -1,51 +1,25 @@
-<section class="page-section" id="services">
-    <div class="container">
-    <h1 class="text-center mt-0"> <%=@user.name%> 
-        <%if @user.peloton_name != nil%>
-             aka "<%=@user.peloton_name%>"
-            <%end%></h1>
-    
-      <h2 class="text-center mt-0">Your Joined Tribes</h2>
-      <hr class="divider my-4">
-      <div class="row">
-        
-        <%@user_tribes.each do |tribe|%>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="mt-5">
-            <%=link_to (image_tag (tribe.thumbnail)), tribe_path(tribe) %>
-            <h3 class="h4 mb-2"> <%=link_to tribe.name, tribe_path(tribe)%></h3>
-          </div>
-        </div>
-        <%end%>
-       
-       
-        
-        </div>
-      </div>
-    </div>
-  </section>
+<h3><%=@user.name%> 
+<%if @user.peloton_name != nil%>
+aka "<%=@user.peloton_name%>"
+<%end%>
+
+<h2>Your Joined Tribes </h2>
 
 
+<%@user_tribes.each do |tribe|%>
+  <%=link_to (image_tag (tribe.thumbnail)), tribe_path(tribe) %><br>  
+  <%=link_to tribe.name, tribe_path(tribe)%><br>
+  
+  <%end%>
 <br>
+<%=button_to "Select My Tribes", edit_user_tribe_path, method: :get%>
+<%=button_to "View All Tribes", tribes_path, method: :get%>
+<%if @user.admin %>
+  <%=button_to "Create A Tribe", new_tribe_path, method: :get%>
+<%end%>
+<hr>
 
-<div class="row justify-content-center">
-       
-        
-          
-          <a><%=link_to "Select My Tribes", edit_user_tribe_path, class:"btn btn-primary btn-xl js-scroll-trigger"%></a>
-           <a><%=link_to "View All Tribes", tribes_path, class:"btn btn-primary btn-xl js-scroll-trigger"%></a>
-           
-           <%if @user.admin %>
-             <a><%=link_to "Create A Tribe", new_tribe_path, class:"btn btn-primary btn-xl js-scroll-trigger"%><a>
-          <%end%>
-            
-        
-  </div>
-<br>
-
-<section class="page-section bg-dark text-white">
-    <div class="container text-center">
-      <h2 class="mb-4">My Upcoming Rides</h2>
+<h2>My Upcoming Rides</h2>
 
 <%@rides_sorted.each do |ride|%>
   <%=link_to "#{ride.tribe.name} - #{display_date(ride.date)} -  
@@ -59,20 +33,9 @@
  <br>
  <br>
 <%end%>
-
-  <%=button_to "Cancel Ride", user_ride_path(ride), method: :delete, class: "btn btn-light btn-xl" %> <br>
+  <%=button_to "Cancel Ride", user_ride_path(ride), method: :delete %> <br>
   
-  <hr class="divider my-4">
+  <hr>
 <%end%>
-
-
-<%=button_to "Edit/Delete Profile", edit_user_path(@user), class: "btn btn-primary btn-xl js-scroll-trigger" %>
-<br>
-<%=button_to "Log Out", logout_path, class: "btn btn-primary btn-xl js-scroll-trigger" %>
-
-    </div>
-  </section>
-
-
-
-
+<%=button_to "Edit Profile", edit_user_path(@user), method: :get %>
+<%=button_to "Log Out", logout_path %>
