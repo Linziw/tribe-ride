@@ -1,39 +1,50 @@
-<h3><%=@user.name%> 
+<div class="heading"><%=@user.name%> 
 <%if @user.peloton_name != nil%>
 aka "<%=@user.peloton_name%>"
 <%end%>
+</div>
 
-<h2>Your Joined Tribes </h2>
+<div class="small-text-white">Your Joined Tribes </div>
 
 
 <%@user_tribes.each do |tribe|%>
   <%=link_to (image_tag (tribe.thumbnail)), tribe_path(tribe) %><br>  
-  <%=link_to tribe.name, tribe_path(tribe)%><br>
+  <%=link_to tribe.name, tribe_path(tribe), class: "small-text-white"%><br>
   
   <%end%>
 <br>
-<%=button_to "Select My Tribes", edit_user_tribe_path, method: :get%>
-<%=button_to "View All Tribes", tribes_path, method: :get%>
+
+<div id="my_centered_buttons">
+<%=button_to "Select My Tribes", edit_user_tribe_path, class: "btn"%>
+<%=button_to "View All Tribes", tribes_path, class: "btn"%>
 <%if @user.admin %>
-  <%=button_to "Create A Tribe", new_tribe_path, method: :get%>
+  <%=button_to "Create A Tribe", new_tribe_path, class: "btn"%>
 <%end%>
+</div>
+<br>
 <hr>
 
-<h2>My Upcoming Rides</h2>
+<br>
+<div class="heading">My Upcoming Rides</div>
 
+<div class="small-text-white">
 <%@rides_sorted.each do |ride|%>
   <%=link_to "#{ride.tribe.name} - #{display_date(ride.date)} -  
   #{ride.instructor} -  #{display_time(ride.time)}  - 
-  #{ride.format} -  #{ride.duration} mins", ride_path(ride)%> 
+  #{ride.format} -  #{ride.duration} mins", ride_path(ride), class: "small-text-white"%> 
 
 
   <%if ride.format == "Recorded" && ride.original_date != nil%>
-<p>Originally Broadcast on <%=display_date(ride.original_date)%> at <%=display_time(ride.original_time)%><p>
+<p class="small-text-white">Originally Broadcast on <%=display_date(ride.original_date)%> at <%=display_time(ride.original_time)%><p>
  <%else%>
  <br>
  <br>
 <%end%>
-  <%=button_to "Cancel Ride", user_ride_path(ride), method: :delete %> <br>
+
+</div>
+<div id="my_centered_buttons">
+  <%=button_to "Cancel Ride", user_ride_path(ride), method: :delete, class: "btn-small" %>
+  </div> <br>
   
   <hr>
 <%end%>
