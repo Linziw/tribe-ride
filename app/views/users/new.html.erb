@@ -1,37 +1,8 @@
-<section class="page-section bg-primary" id="about">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
-          <h2 class="text-white mt-0">Create A TribeRide account!
+<h1 class= "heading">Create A TribeRide account!</h1>
 
-          <hr class="divider light my-4">
-         
-          <%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %> <br>
-<br>
-  <%= f.label :email %>
-  <%= f.email_field :email %> <br>
-  <br>
-
-    <%= f.label :password %>
-  <%= f.password_field :password %> <br>
-  <br>
-
-  <%= f.label :peloton_name %>
-  <%= f.text_field :peloton_name %> <br>
-  <br>
-
-    <%= f.label :admin %>
-  <%= f.check_box :admin %> <br>
-  </h2>
-
-  <br>
-
-  <%= f.submit "Signup", class: "btn btn-light btn-xl js-scroll-trigger" %>
-<% end %>
+<div class="small-text-white">
+<%= form_for @user do |f| %>
+<%= render 'form'%>
+<%end%>
+</div>
     
-        </div>
-      </div>
-    </div>
-  </section>

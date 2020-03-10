@@ -31,3 +31,10 @@
 
 en:
   hello: "Hello world"
+
+  en:
+  helpers:
+    submit:
+      model_name:
+        create: "Create"
+        update: "Update"

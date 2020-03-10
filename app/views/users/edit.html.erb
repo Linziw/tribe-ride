@@ -1,25 +1,13 @@
+<h1 class= "heading">Edit Your Profile</h1>
+
+<div class="small-text-white">
 <%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %> <br>
-<br>
-  <%= f.label :email %>
-  <%= f.email_field :email %> <br>
-  <br>
+<%= render 'form'%>
+<%end%>
+</div>
 
-    <%= f.label :password %>
-  <%= f.password_field :password %> <br>
-  <br>
+<hr>
 
-  <%= f.label :peloton_name %>
-  <%= f.text_field :peloton_name %> <br>
-  <br>
-
-    <%= f.label :admin %>
-  <%= f.check_box :admin %> <br>
-
-  <br>
-
-  <%= f.submit "Edit Profile" %>
-<% end %>
-
-<%=button_to 'Delete Profile', user_path(@user), method: :delete%>
+<div id="my_centered_buttons">
+<%=button_to 'Delete Profile', user_path(@user), method: :delete, class: "red-btn"%>
+</div>
