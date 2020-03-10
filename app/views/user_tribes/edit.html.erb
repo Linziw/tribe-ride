@@ -1,32 +1,20 @@
-  
+<h1 class="heading">Select your Tribes</h1>
 
-
-<header class="masthead">
-    <div class="container h-100">
-      <div class="row h-100 align-items-center justify-content-center text-center">
-        <div class="col-lg-10 align-self-end">
-          <h1 class="text-uppercase text-white font-weight-bold">Select your Tribes</h1>
-          <hr class="divider my-4 ">
-        </div>
-        <div class="col-lg-8 align-self-baseline ">
-          
-          
-          <%=form_for @user, :url => user_tribe_path do |f|%>
+<div id="my_centered_buttons">
+     
+<%=form_for @user, :url => user_tribe_path do |f|%>
           
           <%= f.collection_check_boxes(:tribe_ids, Tribe.all, :id, :name) do |b| %>
-             <%= b.label class:"text-white-75 font-weight-light mb-5 "%>
-            <%= b.check_box class:"form-check-inline" %>
+             <%= b.label class:"small-text-white"%>
+            <%= b.check_box %>
           <% end %>
         
           <br>
           <br>
-          <%=f.submit "Select my Tribes", class:"btn btn-primary btn-xl js-scroll-trigger"%>
+          <div id="my_centered_buttons">
+          <%=f.submit "Select my Tribes", class:"btn"%>
+          </div>
           <%end%>
+  </div>
           
-          
-          </p>
-        </div>
-      </div>
-    </div>
-  </header>
 
