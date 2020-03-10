@@ -5,7 +5,7 @@ class Tribe < ApplicationRecord
   has_one_attached:image, dependent: :destroy
 
   def thumbnail
-    self.image.variant(resize: '200x200')
+    self.image.variant(resize: '183.59x200')
   end
 
   def main_image
