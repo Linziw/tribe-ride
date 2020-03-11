@@ -24,6 +24,7 @@ class TribesController < ApplicationController
   def show
     @tribe=Tribe.find(params[:id])
     @user= User.find(session[:user_id])
+    @users = @tribe.users.uniq
     @rides_sorted = @tribe.rides.sort_by { |r| r['date'] }
   end
 
