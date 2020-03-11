@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :tribes, through: :user_tribes
   has_many :rides, through: :user_rides
   accepts_nested_attributes_for :user_tribes
+  validates :name, presence: true
 
   def participating?(ride)
     if self.rides.ids.include?(ride.id)

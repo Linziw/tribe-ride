@@ -31,6 +31,16 @@ hr {
     font-family: "Merriweather Sans";
 }
 
+#error_explanation {
+    color: white;
+    font-weight: 300;
+    text-align: center;
+    font-size: 1.15rem;
+    line-height: 1.5;
+    font-family: "Merriweather Sans";
+    background-color: #f4623a;
+}
+
 .center {
     display: block;
     margin-left: auto;

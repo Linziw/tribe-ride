@@ -6,9 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+#not currently working!
 DATA = {
   :user_keys =>
-    ["name", "email", "password", "admin", "peloton_name", "uid"],
+    ["name", "email", "admin", "password", "peloton_name", "uid"],
   :users => [
     ["Gary Barlow", "gary@takethat.com", 0, "garybarlow", "FatGaz"],
     ["Robbie Williams", "robbie@takethat.com", 0,  "robbiewilliams", "Coulditbemagic"],
@@ -18,15 +19,15 @@ DATA = {
     ["Emma Bunton", "emma@spicegirls.com", 0, "emmabunton", "Babyspins"],
     ["Geri Halliwell", "geri@spicegirls.com", 0, "gerihalliwell", "Gingerwheely"],
     ["Melanie Chisholm", "melc@spicegirls.com", 0, "melaniechisholm", "SportySpinner"],
-    ["Melanie Brown", "melb@spicegirls.com", 0, "melaniebrown", "ScaryPedals"]
-    ["Victoria Adams", "vic@spicegirls.com", 0, "victoriaadams", "Tooposhtoopush"]
+    ["Melanie Brown", "melb@spicegirls.com", 0, "melaniebrown", "ScaryPedals"],
+    ["Victoria Adams", "vic@spicegirls.com", 0, "victoriaadams", "Tooposhtoopush"],
     ["Admin Demo", "admin@test.com", "Admin", 1, "Admintospin"]
   ],
   :tribe_keys =>
    ["name", "url", "owner_id"],
   :tribes => [
     ["UK Ladies Peloton", "https://www.facebook.com/groups/2232945666965776/"],
-    ["PeloWinos (WineLovers)", "https://www.facebook.com/groups/311217199384064/"]
+    ["PeloWinos (WineLovers)", "https://www.facebook.com/groups/311217199384064/"],
     ["Pelo Tortoises", "https://www.facebook.com/groups/2450992251657884/"]
     ],
 }
