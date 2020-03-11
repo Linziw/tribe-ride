@@ -1,5 +1,6 @@
-<h1><%="#{display_date(@ride.date)} -  #{@ride.instructor} -  #{display_time(@ride.time)}  - #{@ride.format} -  #{@ride.duration} mins"%></h1>
+<h1 class="heading"><%="#{display_date(@ride.date)} -  #{@ride.instructor} -  #{display_time(@ride.time)}  - #{@ride.format} -  #{@ride.duration} mins"%></h1>
 
+<div class="small-text-white">
 <%if @ride.format == "Recorded" && @ride.original_date != nil%>
 <p>Originally Broadcast on <%="#{display_date(@ride.original_date)}"%> at <%="#{display_time(@ride.original_time)}"%> <p>
 <%end%>
@@ -8,8 +9,12 @@
   <p>You are IN!!</p>
 <%end%>
 
-<h3>Participating Users</h3>
+</div>
+<hr>
 
+<h3 class="heading">Participating Users</h3>
+
+<div class="small-text-white">
 <%@ride_users.each do |user|%>
     <p><%=user.name%>
     <%if user.peloton_name != nil%>
@@ -19,12 +24,17 @@
        - Milestone: <%=user.display_milestone(@ride)%>
     <%end%></p>
 <%end%>
+</div>
+
 
 <%if @user.participating?(@ride)%>
-  <%=button_to "Cancel Ride", user_ride_path(@ride), method: :delete %>
+<div id="my_centered_buttons">
+  <%=button_to "Leave Ride", user_ride_path(@ride), method: :delete ,class:"btn"%>
+  </div>
   <% else %>
   
 <hr>
+<div class="small-text-white">
   <%= form_for @user_ride do |f| %>
   <%= f.hidden_field :ride_id, value: @ride.id %>
   <%= f.label :milestone, "Milestone? Leave blank, select one or write your own" %>:
@@ -34,10 +44,14 @@
       <option value="<%=milestone %>"></option>
     <% end %>
   </datalist>
+  </div>
+  
 
   <br>
   <br>
-  <%= f.submit "Join This Ride!" %>
+  <div id="my_centered_buttons">
+  <%= f.submit "Join This Ride!", class:"btn" %>
+  </div>
 <% end %>
 
 
@@ -45,5 +59,7 @@
 
 <hr>
 
-<%=button_to "Back to #{@tribe.name}", tribe_path(@tribe), method: :get%>
-<%=button_to "Home", user_path(@user), method: :get%>
+<div id="my_centered_buttons">
+<%=button_to "Back to #{@tribe.name}", tribe_path(@tribe), class:"btn"%>
+<%=button_to "Home", user_path(@user), class:"btn"%>
+</div>
