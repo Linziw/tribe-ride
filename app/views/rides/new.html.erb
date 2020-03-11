@@ -1,6 +1,15 @@
 <h1 class="heading"><%=@tribe.name%><h1>
 <h2 class="small-text-white">Add a new ride</h2>
 
+<%if @ride.errors.any?%>
+  <div id= "error_explanation">
+  <h2>There were some errors:</h2>
+  <%@ride.errors.full_messages.each do |message|%>
+    <li><%=message%></li>
+    <%end%>
+    <%end%>
+    </div>
+
 <hr>
 
 <%=render 'form'%>

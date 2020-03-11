@@ -14,10 +14,14 @@ class RidesController < ApplicationController
     @user=User.find(session[:user_id])
     @tribe=Tribe.find(params[:ride][:tribe_id])
     @ride=Ride.new(ride_params)
-    @ride.save
-    @user.tribes<<@tribe
-    @user
-    redirect_to tribe_path(@tribe)
+    if @ride.valid?
+      @ride.save
+      @user.tribes<<@tribe
+      @user
+      redirect_to tribe_path(@tribe)
+    else
+      render 'new'
+    end
   end
 
   def edit
