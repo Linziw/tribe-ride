@@ -1,11 +1,18 @@
 class TribesController < ApplicationController
   def index
-    @user = User.find(session[:user_id])
-    @tribes = Tribe.all
+    if session[:user_id] != nil
+      @user = User.find(session[:user_id])
+      @tribes = Tribe.all
+    else redirect_to '/'
+    end
   end
 
   def new
-    @tribe = Tribe.new
+    if session[:user_id] != nil
+      @tribe = Tribe.new
+    else
+      redirect_to '/'
+    end
   end
 
   def create
@@ -22,17 +29,25 @@ class TribesController < ApplicationController
   end
 
   def show
-    @tribe=Tribe.find(params[:id])
-    @user= User.find(session[:user_id])
-    @users = @tribe.users.uniq
-    @rides_sorted = @tribe.rides.sort_by { |r| r['date'] }
+    if session[:user_id] != nil
+      @tribe=Tribe.find(params[:id])
+      @user= User.find(session[:user_id])
+      @users = @tribe.users.uniq
+      @rides_sorted = @tribe.rides.sort_by { |r| r['date'] }
+    else
+      redirect_to '/'
+    end
   end
 
   def edit
-    @tribe=Tribe.find(params[:id])
-    @user= User.find(session[:user_id])
-    if !@tribe.owner?(@user)
-      redirect_to tribe_path(@tribe)
+    if session[:user_id] != nil
+      @tribe=Tribe.find(params[:id])
+      @user= User.find(session[:user_id])
+      if !@tribe.owner?(@user)
+        redirect_to tribe_path(@tribe)
+      end
+    else
+      redirect_to '/'
     end
   end
 

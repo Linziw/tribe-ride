@@ -1,12 +1,16 @@
 class RidesController < ApplicationController
 
   def new
-    @user=User.find(session[:user_id])
-    @tribe=Tribe.find(params[:tribe_id])
-    if params[:tribe_id] && @tribe.owner?(@user)
-      @ride=Ride.new
+    if session[:user_id] != nil
+      @user=User.find(session[:user_id])
+      @tribe=Tribe.find(params[:tribe_id])
+      if params[:tribe_id] && @tribe.owner?(@user)
+        @ride=Ride.new
+      else
+        redirect_to tribe_path(@tribe)
+      end
     else
-      redirect_to tribe_path(@tribe)
+      redirect_to '/'
     end
   end
 
@@ -25,9 +29,13 @@ class RidesController < ApplicationController
   end
 
   def edit
-    @user=User.find(session[:user_id])
-    @tribe=Tribe.find(params[:tribe_id])
-    @ride=Ride.find(params[:id])
+    if session[:user_id] != nil
+      @user=User.find(session[:user_id])
+      @tribe=Tribe.find(params[:tribe_id])
+      @ride=Ride.find(params[:id])
+    else
+      redirect_to '/'
+    end
   end
 
   def update
@@ -42,18 +50,22 @@ class RidesController < ApplicationController
 
 
   def show
-    @user=User.find(session[:user_id])
-    @ride=Ride.find(params[:id])
-    @ride_users = @ride.users.uniq
-    @user_ride = UserRide.new(user_id: @user.id, ride_id:@ride.id)
-    @user_rides = UserRide.all
-    @milestones=@user_rides.collect{|ride| ride.milestone}.uniq.compact
-    if params[:tribe_id]
-      @tribe=Tribe.find(params[:tribe_id])
+    if session[:user_id] != nil
+      @user=User.find(session[:user_id])
+      @ride=Ride.find(params[:id])
+      @ride_users = @ride.users.uniq
+      @user_ride = UserRide.new(user_id: @user.id, ride_id:@ride.id)
+      @user_rides = UserRide.all
+      @milestones=@user_rides.collect{|ride| ride.milestone}.uniq.compact
+      if params[:tribe_id]
+        @tribe=Tribe.find(params[:tribe_id])
+      else
+        @tribe=Tribe.find(@ride.tribe_id)
+      end
     else
-      @tribe=Tribe.find(@ride.tribe_id)
+      redirect_to '/'
     end
-  end
+    end
 
   def join_ride
     @user=User.find(session[:user_id])
