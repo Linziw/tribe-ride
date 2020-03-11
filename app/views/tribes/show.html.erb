@@ -7,7 +7,7 @@
 <%= image_tag @tribe.main_image %>
 </div>
 
-<p class="small-text-white">Upcoming Rides<p>
+<p class="heading">Upcoming Rides<p>
 
 <%@rides_sorted.each do |ride|%>
   <p class="small-text-white"><%=link_to "#{display_date(ride.date)} -  #{ride.instructor} -  #{display_time(ride.time)} #{ride.format} -  #{ride.duration} mins", tribe_ride_path(@tribe, ride), class: "small-text-white"%></p>

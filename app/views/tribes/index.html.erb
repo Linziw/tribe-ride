@@ -1,8 +1,11 @@
+<h1 class="heading">All Tribes</h1>
+
 <%@tribes.each do |tribe|%>
-<p><%=tribe.name%> </p>
+<p class="small-text-white"><%=tribe.name%> </p>
+<hr>
 <%end%>
 
-<hr>
-
-<%=button_to "Home", user_path(@user), method: :get%>
+<div id="my_centered_buttons">
+<%=link_to "Home", user_path(@user), class:"btn"%>
+</div>
 
