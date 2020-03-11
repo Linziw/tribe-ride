@@ -27,11 +27,14 @@ class UsersController < ApplicationController
 
 
   def show
-    @user=User.find(params[:id])
-    @user_tribes = @user.tribes.uniq
-    @rides = @user.member_and_participating
-    @rides_sorted = @rides.sort_by { |r| r['date'] }
-    
+   if session[:user_id]
+      @user=User.find(session[:user_id])
+      @user_tribes = @user.tribes.uniq
+      @rides = @user.member_and_participating
+      @rides_sorted = @rides.sort_by { |r| r['date'] }
+    else
+      redirect_to '/'
+    end
   end
 
 
