@@ -1,0 +1,19 @@
+<div class= "small-text-white">
+<%= form_for @tribe do |f| %>
+
+
+  <%= f.label :name %>
+  <%= f.text_field :name %> <br>
+<br>
+
+ <%= f.label :image %>
+  <%= f.file_field :image%> <br>
+  <br>
+
+    <%= f.label :url %>
+  <%= f.text_field :url %> <br>
+  <br>
+
+  <%= f.submit "Create Tribe", class: "btn" %>
+<% end %>
+</div>
