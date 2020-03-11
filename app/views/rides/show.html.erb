@@ -44,15 +44,11 @@
       <option value="<%=milestone %>"></option>
     <% end %>
   </datalist>
-  </div>
-  
-
   <br>
   <br>
-  <div id="my_centered_buttons">
-  <%= f.submit "Join This Ride!", class:"btn" %>
-  </div>
+  <p id="my_centered_buttons"><%= f.submit "Join This Ride!", class:"btn" %><p>
 <% end %>
+ </div>
 
 
 <%end%>
@@ -60,6 +56,6 @@
 <hr>
 
 <div id="my_centered_buttons">
-<%=button_to "Back to #{@tribe.name}", tribe_path(@tribe), class:"btn"%>
-<%=button_to "Home", user_path(@user), class:"btn"%>
+<%=link_to "Back to #{@tribe.name}", tribe_path(@tribe), class:"btn"%>
+<%=link_to "Home", user_path(@user), class:"btn"%>
 </div>
