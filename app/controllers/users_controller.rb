@@ -46,12 +46,20 @@ class UsersController < ApplicationController
 
 
   def edit
+    if session[:user_id] != nil
     @user=User.find(session[:user_id])
+    else
+      redirect_to '/'
+    end
   end
 
   def index
-    @tribe = Tribe.find(params[:tribe_id])
-    @users = @tribe.users.uniq
+    if session[:user_id] != nil
+      @tribe = Tribe.find(params[:tribe_id])
+      @users = @tribe.users.uniq
+    else
+      redirect_to '/'
+    end
   end
 
   def destroy

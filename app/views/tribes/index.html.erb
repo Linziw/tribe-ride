@@ -1,9 +1,12 @@
 <h1 class="heading">All Tribes</h1>
 
+<div class="small-text-white"
 <%@tribes.each do |tribe|%>
-<p class="small-text-white"><%=tribe.name%> </p>
+<%=link_to tribe.name, tribe.url, class:"small-text-white"%>
 <hr>
 <%end%>
+</div>
+
 
 <div id="my_centered_buttons">
 <%=link_to "Home", user_path(@user), class:"btn"%>

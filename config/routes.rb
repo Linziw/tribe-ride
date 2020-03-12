@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   #nested resource routes
   resources :tribes do
-    resources :rides
+    resources :rides, only: [:create, :new, :edit, :destroy, :show, :destroy, :index]
     resources :users 
   end
 
   resources :user_rides
   resources :user_tribes
-  resources :rides
+  resources :rides, only: [:create, :new, :edit, :destroy, :show, :destroy]
   resources :users
 
   get '/auth/facebook/callback' => 'users#facebook_create'
@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   get 'tribes/:id/rides/:id/join_ride' => 'rides#join_ride'
   patch 'user_tribes' => 'user_tribes#update'
- 
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
