@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :rides, through: :user_rides
   accepts_nested_attributes_for :user_tribes
   validates :name, presence: true
-  validates :password, length:{in: 6..20}
+  validates :password, length:{in: 6..30}
   validates :email, uniqueness: true
 
 

@@ -41,7 +41,11 @@ class UsersController < ApplicationController
   def update
     @user=User.find(session[:user_id])
     @user.update(user_params)
+    if @user.valid?
     redirect_to user_path(@user)
+    else
+      render 'edit'
+    end
   end
 
 

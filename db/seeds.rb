@@ -29,8 +29,9 @@ DATA = {
     ["UK Ladies Peloton", "https://www.facebook.com/groups/2232945666965776/"],
     ["PeloWinos (WineLovers)", "https://www.facebook.com/groups/311217199384064/"],
     ["Pelo Tortoises", "https://www.facebook.com/groups/2450992251657884/"]
-    ],
-}
+    ]
+  }
+
 
 def main
   make_users
