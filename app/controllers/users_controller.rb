@@ -30,7 +30,7 @@ class UsersController < ApplicationController
    if session[:user_id]
       @user=User.find(session[:user_id])
       @user_tribes = @user.tribes.uniq
-      @rides = @user.member_and_participating
+      @rides = @user.member_participating_upcoming
       @rides_sorted = @rides.sort_by { |r| r['date'] }
     else
       redirect_to '/'

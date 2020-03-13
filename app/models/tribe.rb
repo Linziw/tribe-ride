@@ -6,6 +6,8 @@ class Tribe < ApplicationRecord
   validates :name, presence: true
   validates :image, presence: true
 
+
+  
   def thumbnail
     self.image.variant(resize: '183.59x200')
   end
@@ -17,4 +19,7 @@ class Tribe < ApplicationRecord
   def owner?(user)
     self.owner_id == user.id
   end
+
+  
+
 end

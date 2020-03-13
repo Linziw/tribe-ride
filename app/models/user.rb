@@ -18,8 +18,8 @@ class User < ApplicationRecord
     end
   end
 
-  def member_and_participating
-    self.rides.select {|r| self.tribes.include?(r.tribe)}
+  def member_participating_upcoming
+    self.rides.upcoming.select {|r| self.tribes.include?(r.tribe)}
   end
 
   def milestone_present?(ride)
