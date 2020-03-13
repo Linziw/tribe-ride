@@ -18,4 +18,8 @@ module RidesHelper
     time.strftime('%I:%M %p')
   end
 
+  def display_ride(ride)
+    "#{display_date(ride.date)} -  #{ride.instructor} -  #{display_time(ride.time)} #{ride.format} -  #{ride.duration} mins"
+  end
+
 end

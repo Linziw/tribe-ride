@@ -10,7 +10,7 @@
 <p class="heading">Upcoming Rides<p>
 
 <%@rides_sorted.each do |ride|%>
-  <p class="small-text-white"><%=link_to "#{display_date(ride.date)} -  #{ride.instructor} -  #{display_time(ride.time)} #{ride.format} -  #{ride.duration} mins", tribe_ride_path(@tribe, ride), class: "small-text-white"%></p>
+  <p class="small-text-white"><%=link_to "#{display_ride(ride)}", tribe_ride_path(@tribe, ride), class: "small-text-white"%></p>
 
   <%if ride.format == "Recorded" && ride.original_date != nil%>
     <p class="small-text-white">Originally Broadcast on <%="#{display_date(ride.original_date)}"%> at <%="#{display_time(ride.original_time)}"%> <p>
