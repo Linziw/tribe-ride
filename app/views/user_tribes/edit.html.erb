@@ -5,8 +5,10 @@
 <%=form_for @user, :url => user_tribe_path do |f|%>
           
           <%= f.collection_check_boxes(:tribe_ids, Tribe.all, :id, :name) do |b| %>
+          <div id="my_centered_buttons">
              <%= b.label class:"small-text-white"%>
             <%= b.check_box %>
+            </div>
           <% end %>
         
           <br>
