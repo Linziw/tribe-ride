@@ -1,6 +1,6 @@
 class TribesController < ApplicationController
   def index
-    if session[:user_id] != nil
+    if helpers.logged_in?
       @user = User.find(session[:user_id])
       @tribes = Tribe.all
     else redirect_to '/'
@@ -8,7 +8,7 @@ class TribesController < ApplicationController
   end
 
   def new
-    if session[:user_id] != nil
+    if helpers.logged_in?
       @tribe = Tribe.new
     else
       redirect_to '/'
@@ -29,7 +29,7 @@ class TribesController < ApplicationController
   end
 
   def show
-    if session[:user_id] != nil
+    if helpers.logged_in?
       @tribe=Tribe.find(params[:id])
       @user= User.find(session[:user_id])
       @users = @tribe.users.uniq
@@ -40,7 +40,7 @@ class TribesController < ApplicationController
   end
 
   def edit
-    if session[:user_id] != nil
+    if helpers.logged_in?
       @tribe=Tribe.find(params[:id])
       @user= User.find(session[:user_id])
       if !@tribe.owner?(@user)

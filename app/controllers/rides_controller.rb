@@ -1,7 +1,7 @@
 class RidesController < ApplicationController
 
   def new
-    if session[:user_id] != nil
+    if helpers.logged_in?
       @user=User.find(session[:user_id])
       @tribe=Tribe.find(params[:tribe_id])
       if params[:tribe_id] && @tribe.owner?(@user)
@@ -29,7 +29,7 @@ class RidesController < ApplicationController
   end
 
   def edit
-    if session[:user_id] != nil
+    if helpers.logged_in?
       @user=User.find(session[:user_id])
       @tribe=Tribe.find(params[:tribe_id])
       @ride=Ride.find(params[:id])
@@ -50,7 +50,7 @@ class RidesController < ApplicationController
 
 
   def show
-    if session[:user_id] != nil
+    if helpers.logged_in?
       @user=User.find(session[:user_id])
       @ride=Ride.find(params[:id])
       @ride_users = @ride.users.uniq

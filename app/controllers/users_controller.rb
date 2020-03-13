@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
 
   def show
-   if session[:user_id]
+   if helpers.logged_in?
       @user=User.find(session[:user_id])
       @user_tribes = @user.tribes.uniq
       @rides = @user.member_participating_upcoming
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
 
 
   def edit
-    if session[:user_id] != nil
+    if helpers.logged_in?
     @user=User.find(session[:user_id])
     else
       redirect_to '/'
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    if session[:user_id] != nil
+    if helpers.logged_in?
       @tribe = Tribe.find(params[:tribe_id])
       @users = @tribe.users.uniq
     else
