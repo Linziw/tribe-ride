@@ -20,4 +20,8 @@ module RidesHelper
   def display_ride(ride)
     "#{display_date(ride.date)} -  #{ride.instructor} -  #{display_time(ride.time)} #{ride.format} -  #{ride.duration} mins"
   end
+
+  def display_original(ride)
+    "#{display_date(@ride.original_date)} at #{display_time(@ride.original_time)}"
+  end
 end

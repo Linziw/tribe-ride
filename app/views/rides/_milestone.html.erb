@@ -1,0 +1,15 @@
+<div class="small-text-white">
+    <%= form_for @user_ride do |f| %>
+      <%= f.hidden_field :ride_id, value: @ride.id %>
+      <%= f.label :milestone, "Milestone? Leave blank, select one or write your own" %>:
+      <%= f.text_field :milestone, list: 'milestones_autocomplete' %>
+      <datalist id="milestones_autocomplete">
+      <% @milestones.each do |milestone| %>
+        <option value="<%=milestone %>"></option>
+      <% end %>
+      </datalist>
+      <br>
+      <br>
+      <p id="my_centered_buttons"><%= f.submit "Join This Ride!", class:"btn" %><p>
+    <% end %>
+  </div>

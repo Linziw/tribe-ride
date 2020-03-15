@@ -2,41 +2,27 @@
 
 <div class="small-text-white">
   <%if @ride.format == "Recorded" && @ride.original_date != nil%>
-    <p>Originally Broadcast on <%="#{display_date(@ride.original_date)}"%> at <%="#{display_time(@ride.original_time)}"%> 
-      <p>
-      <%end%>
-      <%if @user.participating?(@ride)%>
-        <p>You are IN!!</p>
-      <%end%>
-    </div>
-    <hr>
-    <h3 class="heading">Participating Users</h3>
-    <%=render 'participating'%>
-    <%if @user.participating?(@ride)%>
-      <div id="my_centered_buttons">
-        <%=button_to "Leave Ride", user_ride_path(@ride), method: :delete ,class:"btn"%>
-      </div>
-    <% else %>
-      <hr>
-      <div class="small-text-white">
-        <%= form_for @user_ride do |f| %>
-          <%= f.hidden_field :ride_id, value: @ride.id %>
-          <%= f.label :milestone, "Milestone? Leave blank, select one or write your own" %>:
-          <%= f.text_field :milestone, list: 'milestones_autocomplete' %>
-          <datalist id="milestones_autocomplete">
-            <% @milestones.each do |milestone| %>
-              <option value="<%=milestone %>"></option>
-            <% end %>
-          </datalist>
-          <br>
-          <br>
-          <p id="my_centered_buttons"><%= f.submit "Join This Ride!", class:"btn" %>
-            <p>
-            <% end %>
-          </div>
-        <%end%>
-        <hr>
-        <div id="my_centered_buttons">
-          <%=link_to "Back to #{@tribe.name}", tribe_path(@tribe), class:"btn"%>
-          <%=link_to "Home", user_path(@user), class:"btn"%>
-        </div>
+    <p>Originally Broadcast on <%=display_original(@ride)%></p>
+  <%elsif @user.participating?(@ride)%>
+    <p>You are IN!!</p>
+  <%end%>
+</div>
+<hr>
+
+<h3 class="heading">Participating Users</h3>
+<%=render 'participating'%>
+
+<%if @user.participating?(@ride)%>
+  <div id="my_centered_buttons">
+    <%=button_to "Leave Ride", user_ride_path(@ride), method: :delete ,class:"btn"%>
+  </div>
+<% else %>
+  <hr>
+<%=render 'milestone'%>
+<%end%>
+
+<hr>
+<div id="my_centered_buttons">
+  <%=link_to "Back to #{@tribe.name}", tribe_path(@tribe), class:"btn"%>
+  <%=link_to "Home", user_path(@user), class:"btn"%>
+</div>
