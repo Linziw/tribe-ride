@@ -1,3 +1,13 @@
+<%if @user.errors.any?%>
+  <div id= "error_explanation">
+  <h2>There were some errors:</h2>
+  <%@user.errors.full_messages.each do |message|%>
+    <li><%=message%></li>
+    <%end%>
+    <%end%>
+    </div>
+
+<div class="small-text-white">
 <%= form_for @user do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %> <br>
@@ -22,3 +32,4 @@
 
   <%= f.submit class: "btn"%>
   <%end%>
+  </div>

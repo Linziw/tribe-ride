@@ -1,19 +1,7 @@
 <h1 class= "heading">Create A TribeRide account!</h1>
 
-<%if @user.errors.any?%>
-  <div id= "error_explanation">
-  <h2>There were some errors:</h2>
-  <%@user.errors.full_messages.each do |message|%>
-    <li><%=message%></li>
-    <%end%>
-    <%end%>
-    </div>
 
-    <br>
-
-<div class="small-text-white">
-<%= form_for @user do |f| %>
 <%= render 'form'%>
-<%end%>
-</div>
+
+
     

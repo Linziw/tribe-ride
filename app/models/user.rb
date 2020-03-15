@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :password, length:{in: 6..30}
   validates :email, uniqueness: true
+  validates :email, presence: true
 
 
   def participating?(ride)

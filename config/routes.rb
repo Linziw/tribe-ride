@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :user_rides
   resources :user_tribes
   resources :rides, only: [:create, :new, :edit, :destroy, :show]
-  resources :users, only: [:create, :new, :edit, :destroy, :show]
+  resources :users, only: [:create, :new, :edit, :destroy, :show, :update]
 
   get '/auth/facebook/callback' => 'users#facebook_create'
   get '/' => 'sessions#welcome'
