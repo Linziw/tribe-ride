@@ -1,0 +1,11 @@
+<div class="small-text-white">
+<%@ride_users.each do |user|%>
+    <p><%=user.name%>
+    <%if user.peloton_name != nil%>
+       aka "<%=user.peloton_name%>"
+    <%end%>
+    <%if user.milestone_present?(@ride)%>
+       - Milestone: <%=user.display_milestone(@ride)%>
+    <%end%></p>
+<%end%>
+</div>
