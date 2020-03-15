@@ -22,6 +22,6 @@ module RidesHelper
   end
 
   def display_original(ride)
-    "#{display_date(@ride.original_date)} at #{display_time(@ride.original_time)}"
+    "#{display_date(ride.original_date)} at #{display_time(ride.original_time)}"
   end
 end
