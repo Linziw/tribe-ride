@@ -1,46 +1,37 @@
 <%if @ride.errors.any?%>
   <div id= "error_explanation">
-  <h2>There were some errors:</h2>
-  <%@ride.errors.full_messages.each do |message|%>
-    <li><%=message%></li>
+    <h2>There were some errors:</h2>
+    <%@ride.errors.full_messages.each do |message|%>
+      <li><%=message%></li>
     <%end%>
-    <%end%>
-    </div>
+  <%end%>
+</div>
 
 <div class="small-text-white">
-<%= form_for @ride do |f| %>
-
-  <%= f.hidden_field :tribe_id, :value => @ride.tribe.id %>
-
-  <%= f.label :instructor %>
-  <%= f.select :instructor, instructors, :include_blank => "Select One" %><br>
-<br>
-  <%= f.label :date %>
-  <%= f.date_field :date, min: Date.today %><br>
-  <br>
-
-  <%= f.label :time %>
-  <%= f.time_field :time %> <br>
-  <br>
-
-  <%= f.label :duration %>
-  <%= f.text_field :duration %> <br>
-  <br>
-
+  <%= form_for @ride do |f| %>
+    <%= f.hidden_field :tribe_id, :value => @ride.tribe.id %>
+    <%= f.label :instructor %>
+    <%= f.select :instructor, instructors, :include_blank => "Select One" %><br>
+    <br>
+    <%= f.label :date %>
+    <%= f.date_field :date, min: Date.today %><br>
+    <br>
+    <%= f.label :time %>
+    <%= f.time_field :time %> <br>
+    <br>
+    <%= f.label :duration %>
+    <%= f.text_field :duration %> <br>
+    <br>
     <%= f.label :format %>
-  <%= f.select :format, ['Live', 'Recorded'], :include_blank => "Select One" %><br>
-  <br>
-
-  <hr>
-
-   <%= f.label :'Original Broadcast Date, (only complete if format is recorded)' %>
-  <%= f.date_field :original_date, max: Date.today %> <br>
-  <br>
-
-  <%= f.label :'Original Broadcast Time, (only complete if format is recorded)' %>
-  <%= f.time_field :original_time  %> <br>
-  <br>
-
-  <%= f.submit class:"btn" %>
-<% end %>
+    <%= f.select :format, ['Live', 'Recorded'], :include_blank => "Select One" %><br>
+    <br>
+    <hr>
+    <%= f.label :'Original Broadcast Date, (only complete if format is recorded)' %>
+    <%= f.date_field :original_date, max: Date.today %> <br>
+    <br>
+    <%= f.label :'Original Broadcast Time, (only complete if format is recorded)' %>
+    <%= f.time_field :original_time  %> <br>
+    <br>
+    <%= f.submit class:"btn" %>
+  <% end %>
 </div>

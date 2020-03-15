@@ -1,14 +1,4 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
-
-
-
-    (function($) {
+(function($) {
     "use strict"; // Start of use strict
 
     // Smooth scrolling using jQuery easing

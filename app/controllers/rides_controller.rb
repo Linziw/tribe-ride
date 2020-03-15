@@ -1,78 +1,74 @@
 class RidesController < ApplicationController
-
   def new
     if helpers.logged_in?
-      @user=User.find(session[:user_id])
-      @tribe=Tribe.find(params[:tribe_id])
+      @user = User.find(session[:user_id])
+      @tribe = Tribe.find(params[:tribe_id])
       if params[:tribe_id] && @tribe.owner?(@user)
-        @ride=Ride.new
+        @ride = Ride.new
       else
         redirect_to tribe_path(@tribe)
       end
     else
-      redirect_to '/'
+      redirect_to "/"
     end
   end
 
   def create
-    @user=User.find(session[:user_id])
-    @tribe=Tribe.find(params[:ride][:tribe_id])
-    @ride=Ride.new(ride_params)
+    @user = User.find(session[:user_id])
+    @tribe = Tribe.find(params[:ride][:tribe_id])
+    @ride = Ride.new(ride_params)
     if @ride.valid?
       @ride.save
-      @user.tribes<<@tribe
-      @user
+      @user.tribes << @tribe
       redirect_to tribe_path(@tribe)
     else
-      render 'new'
+      render "new"
     end
   end
 
   def edit
     if helpers.logged_in?
-      @user=User.find(session[:user_id])
-      @tribe=Tribe.find(params[:tribe_id])
-      @ride=Ride.find(params[:id])
+      @user = User.find(session[:user_id])
+      @tribe = Tribe.find(params[:tribe_id])
+      @ride = Ride.find(params[:id])
     else
-      redirect_to '/'
+      redirect_to "/"
     end
   end
 
   def update
-    @user=User.find(session[:user_id])
-    @ride=Ride.find(params[:id])
-    @tribe=@ride.tribe
+    @user = User.find(session[:user_id])
+    @ride = Ride.find(params[:id])
+    @tribe = @ride.tribe
     @ride.update(ride_params)
     if @ride.valid?
       @ride.save
       redirect_to tribe_path(@tribe)
     else
-      render 'edit'
+      render "edit"
     end
-
   end
-
 
   def show
     if helpers.logged_in?
-      @user=User.find(session[:user_id])
-      @ride=Ride.find(params[:id])
+      @user = User.find(session[:user_id])
+      @ride = Ride.find(params[:id])
       @ride_users = @ride.users.uniq
-      @user_ride = UserRide.new(user_id: @user.id, ride_id:@ride.id)
+      @user_ride = UserRide.new(user_id: @user.id, ride_id: @ride.id)
       @user_rides = UserRide.all
-      @milestones=@user_rides.collect{|ride| ride.milestone}.uniq.compact
+      @milestones = @user_rides.collect { |ride| ride.milestone }.uniq.compact
       if params[:tribe_id]
-        @tribe=Tribe.find(params[:tribe_id])
+        @tribe = Tribe.find(params[:tribe_id])
       else
-        @tribe=Tribe.find(@ride.tribe_id)
+        @tribe = Tribe.find(@ride.tribe_id)
       end
     else
-      redirect_to '/'
+      redirect_to "/"
     end
-    end
+  end
 
   def join_ride
-    @user=User.find(session[:user_id])
+    @user = User.find(session[:user_id])
     @ride = Ride.find(params[:id])
     @user.rides << @ride
     @user.save
@@ -80,17 +76,16 @@ class RidesController < ApplicationController
   end
 
   def destroy
-    @user=User.find(session[:user_id])
-    @ride=Ride.find(params[:id])
-    @tribe=@ride.tribe
+    @user = User.find(session[:user_id])
+    @ride = Ride.find(params[:id])
+    @tribe = @ride.tribe
     @ride.delete
     redirect_to tribe_path(@tribe)
   end
 
-
   private
 
   def ride_params
-  params.require(:ride).permit(:instructor, :date, :time, :duration, :format, :tribe_id, :original_date, :original_time)
+    params.require(:ride).permit(:instructor, :date, :time, :duration, :format, :tribe_id, :original_date, :original_time)
   end
 end

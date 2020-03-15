@@ -8,8 +8,5 @@ class Ride < ApplicationRecord
   validates :duration, presence: true
   validates :format, presence: true
 
-  scope :upcoming, -> { Ride.where('date > ?', DateTime.now) }
-
- 
-
+  scope :upcoming, -> { Ride.where("date > ?", DateTime.now) }
 end
