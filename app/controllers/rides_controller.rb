@@ -40,11 +40,15 @@ class RidesController < ApplicationController
 
   def update
     @user=User.find(session[:user_id])
-    @tribe=Tribe.find(params[:ride][:tribe_id])
     @ride=Ride.find(params[:id])
+    @tribe=@ride.tribe
     @ride.update(ride_params)
-    @ride.save
-    redirect_to tribe_path(@tribe)
+    if @ride.valid?
+      @ride.save
+      redirect_to tribe_path(@tribe)
+    else
+      render 'edit'
+    end
 
   end
 

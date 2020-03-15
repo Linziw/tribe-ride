@@ -54,8 +54,12 @@ class TribesController < ApplicationController
   def update
     @tribe=Tribe.find(params[:id])
     @tribe.update(tribe_params)
+    if @tribe.valid?
     @tribe.save
     redirect_to tribe_path(@tribe)
+    else
+      render 'edit'
+    end
   end
 
   def destroy

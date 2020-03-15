@@ -1,6 +1,6 @@
 class Ride < ApplicationRecord
   has_many :user_rides, dependent: :destroy
-  belongs_to :tribe
+  belongs_to :tribe, optional: true
   has_many :users, through: :user_rides
   validates :instructor, presence: true
   validates :date, presence: true

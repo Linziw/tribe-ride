@@ -1,7 +1,16 @@
+<%if @ride.errors.any?%>
+  <div id= "error_explanation">
+  <h2>There were some errors:</h2>
+  <%@ride.errors.full_messages.each do |message|%>
+    <li><%=message%></li>
+    <%end%>
+    <%end%>
+    </div>
+
 <div class="small-text-white">
 <%= form_for @ride do |f| %>
 
-  <%= f.hidden_field :tribe_id, :value => params[:tribe_id] %>
+  <%= f.hidden_field :tribe_id, :value => @ride.tribe.id %>
 
   <%= f.label :instructor %>
   <%= f.select :instructor, instructors, :include_blank => "Select One" %><br>
