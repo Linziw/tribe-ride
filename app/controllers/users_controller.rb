@@ -47,20 +47,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if helpers.logged_in?
       @user = User.find(session[:user_id])
-    else
-      redirect_to "/"
-    end
   end
 
   def index
-    if helpers.logged_in?
       @tribe = Tribe.find(params[:tribe_id])
       @users = @tribe.users.uniq
-    else
-      redirect_to "/"
-    end
   end
 
   def destroy
