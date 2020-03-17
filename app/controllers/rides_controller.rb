@@ -1,8 +1,8 @@
 class RidesController < ApplicationController
   def new
     if helpers.logged_in?
-      @user = User.find(session[:user_id])
-      @tribe = Tribe.find(params[:tribe_id])
+      set_user
+      set_tribe
       if params[:tribe_id] && @tribe.owner?(@user)
         @ride = @tribe.rides.build
       else
@@ -24,17 +24,17 @@ class RidesController < ApplicationController
 
   def edit
     if helpers.logged_in?
-      @user = User.find(session[:user_id])
-      @tribe = Tribe.find(params[:tribe_id])
-      @ride = Ride.find(params[:id])
+      set_user
+      set_tribe
+      set_ride
     else
       redirect_to "/"
     end
   end
 
   def update
-    @user = User.find(session[:user_id])
-    @ride = Ride.find(params[:id])
+    set_user
+    set_ride
     @tribe = @ride.tribe
     @ride.update(ride_params)
     if @ride.save
@@ -46,14 +46,14 @@ class RidesController < ApplicationController
 
   def show
     if helpers.logged_in?
-      @user = User.find(session[:user_id])
-      @ride = Ride.find(params[:id])
+      set_user
+      set_ride
       @ride_users = @ride.users.uniq
       @user_ride = UserRide.new(user_id: @user.id, ride_id: @ride.id)
       @user_rides = UserRide.all
       @milestones = @user_rides.collect { |ride| ride.milestone }.uniq.compact
       if params[:tribe_id]
-        @tribe = Tribe.find(params[:tribe_id])
+        set_tribe
       else
         @tribe = Tribe.find(@ride.tribe_id)
       end
@@ -63,16 +63,16 @@ class RidesController < ApplicationController
   end
 
   def join_ride
-    @user = User.find(session[:user_id])
-    @ride = Ride.find(params[:id])
+    set_user
+    set_ride
     @user.rides << @ride
     @user.save
     redirect_to tribe_path(@ride.tribe)
   end
 
   def destroy
-    @user = User.find(session[:user_id])
-    @ride = Ride.find(params[:id])
+    set_user
+    set_ride
     @tribe = @ride.tribe
     @ride.delete
     redirect_to tribe_path(@tribe)
@@ -82,6 +82,18 @@ class RidesController < ApplicationController
 
   def ride_params
     params.require(:ride).permit(:instructor, :date, :time, :duration, :format, :tribe_id, :original_date, :original_time)
+  end
+
+  def set_user
+    @user = User.find(session[:user_id])
+  end
+
+  def set_tribe
+    @tribe = Tribe.find(params[:tribe_id])
+  end
+
+  def set_ride
+    @ride = Ride.find(params[:id])
   end
 
 
