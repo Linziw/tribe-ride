@@ -2,7 +2,7 @@ class TribesController < ApplicationController
 
   def index
     if helpers.logged_in?
-      @user = User.find(session[:user_id])
+      set_user
       @tribes = Tribe.all
     else redirect_to "/"     
     end
@@ -30,8 +30,8 @@ class TribesController < ApplicationController
 
   def show
     if helpers.logged_in?
-      @tribe = Tribe.find(params[:id])
-      @user = User.find(session[:user_id])
+      set_tribe
+      set_user
       @users = @tribe.users.uniq
       @rides_sorted = @tribe.rides.upcoming.sort_by { |r| r["date"] }
     else
@@ -41,8 +41,8 @@ class TribesController < ApplicationController
 
   def edit
     if helpers.logged_in?
-      @tribe = Tribe.find(params[:id])
-      @user = User.find(session[:user_id])
+      set_tribe
+      set_user
       if !@tribe.owner?(@user)
         redirect_to tribe_path(@tribe)
       end
@@ -52,7 +52,7 @@ class TribesController < ApplicationController
   end
 
   def update
-    @tribe = Tribe.find(params[:id])
+    set_tribe
     @tribe.update(tribe_params)
     if @tribe.save
       redirect_to tribe_path(@tribe)
@@ -62,8 +62,8 @@ class TribesController < ApplicationController
   end
 
   def destroy
-    @user = User.find(session[:user_id])
-    @tribe = Tribe.find(params[:id])
+    set_user
+    set_tribe
     if @tribe.owner?(@user) && @user.admin?
       @tribe.rides.destroy_all
       @tribe.destroy
@@ -78,4 +78,17 @@ class TribesController < ApplicationController
   def tribe_params
     params.require(:tribe).permit(:name, :image_url, :url, :image)
   end
+
+  def set_user
+    @user = User.find(session[:user_id])
+  end
+
+  def set_tribe
+    if !params[:tribe_id] == nil
+    @tribe = Tribe.find(params[:tribe_id])
+    else
+      @tribe = Tribe.find(params[:id])
+    end
+  end
+
 end

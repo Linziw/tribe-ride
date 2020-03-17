@@ -52,11 +52,7 @@ class RidesController < ApplicationController
       @user_ride = UserRide.new(user_id: @user.id, ride_id: @ride.id)
       @user_rides = UserRide.all
       @milestones = @user_rides.collect { |ride| ride.milestone }.uniq.compact
-      if params[:tribe_id]
-        set_tribe
-      else
-        @tribe = Tribe.find(@ride.tribe_id)
-      end
+      @tribe = Tribe.find(@ride.tribe_id)
     else
       redirect_to "/"
     end
