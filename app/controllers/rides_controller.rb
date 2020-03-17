@@ -1,16 +1,12 @@
 class RidesController < ApplicationController
   def new
-    if helpers.logged_in?
-      set_user
-      set_tribe
-      if params[:tribe_id] && @tribe.owner?(@user)
-        @ride = @tribe.rides.build
-      else
-        redirect_to tribe_path(@tribe)
-      end
+    set_user
+    set_tribe
+    if params[:tribe_id] && @tribe.owner?(@user)
+      @ride = @tribe.rides.build
     else
-      redirect_to "/"
-    end
+      redirect_to tribe_path(@tribe)
+    end  
   end
 
   def create
@@ -23,13 +19,9 @@ class RidesController < ApplicationController
   end
 
   def edit
-    if helpers.logged_in?
       set_user
       set_tribe
       set_ride
-    else
-      redirect_to "/"
-    end
   end
 
   def update
@@ -45,7 +37,6 @@ class RidesController < ApplicationController
   end
 
   def show
-    if helpers.logged_in?
       set_user
       set_ride
       @ride_users = @ride.users.uniq
@@ -53,9 +44,6 @@ class RidesController < ApplicationController
       @user_rides = UserRide.all
       @milestones = @user_rides.collect { |ride| ride.milestone }.uniq.compact
       @tribe = Tribe.find(@ride.tribe_id)
-    else
-      redirect_to "/"
-    end
   end
 
   def join_ride

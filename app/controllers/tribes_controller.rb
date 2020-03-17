@@ -1,19 +1,12 @@
 class TribesController < ApplicationController
 
   def index
-    if helpers.logged_in?
-      set_user
-      @tribes = Tribe.all
-    else redirect_to "/"     
-    end
+    set_user
+    @tribes = Tribe.all
   end
 
   def new
-    if helpers.logged_in?
       @tribe = Tribe.new
-    else
-      redirect_to "/"
-    end
   end
 
   def create
@@ -29,26 +22,18 @@ class TribesController < ApplicationController
   end
 
   def show
-    if helpers.logged_in?
       set_tribe
       set_user
       @users = @tribe.users.uniq
       @rides_sorted = @tribe.rides.upcoming.sort_by { |r| r["date"] }
-    else
-      redirect_to "/"
-    end
   end
 
   def edit
-    if helpers.logged_in?
       set_tribe
       set_user
       if !@tribe.owner?(@user)
         redirect_to tribe_path(@tribe)
       end
-    else
-      redirect_to "/"
-    end
   end
 
   def update

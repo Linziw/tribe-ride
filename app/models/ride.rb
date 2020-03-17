@@ -10,6 +10,7 @@ class Ride < ApplicationRecord
 
   scope :upcoming, -> { Ride.where("date > ?", DateTime.now) }
 
+
   private
 
   def self.ride_creator(params)
