@@ -6,7 +6,7 @@ class Tribe < ApplicationRecord
   validates :name, presence: true
   validates :image, presence: true
 
-  def thumbnail
+  def thumbnail   
     self.image.variant(resize: "183.59x200")
   end
 
