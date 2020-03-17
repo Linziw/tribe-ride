@@ -19,9 +19,8 @@ class TribesController < ApplicationController
   def create
     @user = User.find(session[:user_id])
     @tribe = Tribe.new(tribe_params)
-    if @tribe.valid?
-      @tribe.owner_id = @user.id
-      @tribe.save
+    @tribe.owner_id = @user.id
+    if @tribe.save
       @user.tribes << @tribe
       redirect_to tribe_path(@tribe)
     else
@@ -55,8 +54,7 @@ class TribesController < ApplicationController
   def update
     @tribe = Tribe.find(params[:id])
     @tribe.update(tribe_params)
-    if @tribe.valid?
-      @tribe.save
+    if @tribe.save
       redirect_to tribe_path(@tribe)
     else
       render "edit"
