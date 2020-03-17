@@ -4,8 +4,7 @@ class RidesController < ApplicationController
       @user = User.find(session[:user_id])
       @tribe = Tribe.find(params[:tribe_id])
       if params[:tribe_id] && @tribe.owner?(@user)
-        @ride = Ride.new
-        @ride.tribe=@tribe
+        @ride=@tribe.rides.build
       else
         redirect_to tribe_path(@tribe)
       end
