@@ -4,7 +4,7 @@ class RidesController < ApplicationController
       @user = User.find(session[:user_id])
       @tribe = Tribe.find(params[:tribe_id])
       if params[:tribe_id] && @tribe.owner?(@user)
-        @ride=@tribe.rides.build
+        @ride = @tribe.rides.build
       else
         redirect_to tribe_path(@tribe)
       end
@@ -16,9 +16,8 @@ class RidesController < ApplicationController
   def create
     @user = User.find(session[:user_id])
     @tribe = Tribe.find(params[:ride][:tribe_id])
-    @ride = Ride.new(ride_params)
-    if @ride.valid?
-      @ride.save
+    @ride = @tribe.rides.build(ride_params)
+    if @ride.save
       @user.tribes << @tribe
       redirect_to tribe_path(@tribe)
     else
@@ -41,8 +40,7 @@ class RidesController < ApplicationController
     @ride = Ride.find(params[:id])
     @tribe = @ride.tribe
     @ride.update(ride_params)
-    if @ride.valid?
-      @ride.save
+    if @ride.save
       redirect_to tribe_path(@tribe)
     else
       render "edit"
