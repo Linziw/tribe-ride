@@ -32,4 +32,5 @@ class User < ApplicationRecord
   def display_milestone(ride)
     self.user_rides.find_by(ride_id: ride.id).milestone
   end
+
 end

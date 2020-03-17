@@ -14,12 +14,9 @@ class RidesController < ApplicationController
   end
 
   def create
-    @user = User.find(session[:user_id])
-    @tribe = Tribe.find(params[:ride][:tribe_id])
-    @ride = @tribe.rides.build(ride_params)
+    @ride = Ride.ride_creator(ride_params)
     if @ride.save
-      @user.tribes << @tribe
-      redirect_to tribe_path(@tribe)
+      redirect_to "/tribes/#{ride_params[:tribe_id]}"
     else
       render "new"
     end
@@ -86,4 +83,6 @@ class RidesController < ApplicationController
   def ride_params
     params.require(:ride).permit(:instructor, :date, :time, :duration, :format, :tribe_id, :original_date, :original_time)
   end
+
+
 end
